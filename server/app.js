@@ -12,7 +12,7 @@ app.use(express.static('../client/dist'));
 app.use(express.static(path.join(__dirname, '..', '..', 'public'), { maxAge: '30d' }));
 
 app.use(controllers);
-app.set('port', process.env.PORT || 4013);
+app.set('port', process.env.PORT || 4000);
 
 
 module.exports = app;
