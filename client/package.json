@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-testing-library": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.13.0"
   }
 }
