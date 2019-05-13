@@ -1,6 +1,7 @@
 node_modules
 .vscode
 client/node_modules
-.cache/
-dist/*.env
+.cache
+dist
+*.env
 keys_dev.js
