@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/facn5/BloodDonor#readme",
   "dependencies": {
-    "babel-eslint": "^10.0.1"
+    "babel-eslint": "^10.0.1",
+    "mongodb": "^3.1.10"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
