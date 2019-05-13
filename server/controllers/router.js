@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const error = require("./error");
 
-router.get("/", (req, res) => {
-    res.sendFile('index page');
-});
-
 router.use(error.client);
 router.use(error.server);
 
