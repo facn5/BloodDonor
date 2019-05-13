@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "lint": "eslint src/"
