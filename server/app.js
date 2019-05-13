@@ -8,7 +8,7 @@ const app = express();
 app.disable('x-powered-by');
 app.use(compression());
 app.use(express.json());
-app.use(express.static('../client/dist'));
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(express.static(path.join(__dirname, '..', '..', 'public'), { maxAge: '30d' }));
 
 app.use(controllers);
