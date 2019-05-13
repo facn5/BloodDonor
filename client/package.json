@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "parcel": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-testing-library": "^7.0.0"
