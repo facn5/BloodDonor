@@ -19,8 +19,6 @@ html {
 
 html, body {
     margin: 0;
-    overflow:auto;
-    overflow: initial;
     scroll-behavior: smooth;
     font-family: 'Inconsolata', monospace;
 
