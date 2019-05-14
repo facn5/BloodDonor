@@ -13,6 +13,6 @@ export const Map = ({ stationName, street, contact, openHours, mapSrc }) => (
       <p><img src="https://img.icons8.com/ios/50/000000/phone.png"/>   {contact}</p>
       <p><img src="https://img.icons8.com/pastel-glyph/64/000000/clock.png"/>   {openHours}</p>
     </div>
-</div>
+  </div>
   </>
 );
