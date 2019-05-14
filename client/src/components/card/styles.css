@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  border: solid 1px;
+  background-color: #f77;
+  border-radius: 10px;
+  font-family: "ubuntu";
+  font-size: 18px;
+  width: 100%;
+}
+
+.subContainer {
+  padding: 15px;
+}
+
+.imgDim {
+  width: 50px;
+  height: 50px;
+}
+
+button {
+  background: transparent;
+}
