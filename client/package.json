@@ -14,13 +14,14 @@
     "parcel": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-testing-library": "^7.0.0"
-  },
-  "devDependencies": {
+    "react-testing-library": "^7.0.0",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.11.0"
+  },
+  "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.1",
     "eslint-config-react-minimal": "^1.0.0",
