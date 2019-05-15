@@ -13,8 +13,8 @@ export default class Card extends React.Component {
     };
 
     displayMap = () => {
-        this.setState(() => {
-            return { display: !this.state.display }
+        this.setState((prevState) => {
+            return { display: !prevState.display }
         }, console.log(this.state.display))
     }
 
