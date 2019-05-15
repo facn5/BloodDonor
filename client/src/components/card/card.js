@@ -1,5 +1,6 @@
 import React from "react";
 import './styles';
+import {Map} from './map/map.js';
 
 export default class Card extends React.Component {
     state = {
@@ -7,7 +8,11 @@ export default class Card extends React.Component {
             stationName: "Rambam",
             location: "Haifa",
             bloodType: "A+",
-            status: "Critical"
+            status: "Critical",
+            street: "s1231",
+            contact: "0526536395",
+            openHours:"11AM - 4PM",
+            mapSrc: "https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed"
         },
         display: false
     };
@@ -23,11 +28,16 @@ export default class Card extends React.Component {
             stationName,
             bloodType,
             location,
-            status
+            status,
+            street,
+            contact,
+            openHours,
+            mapSrc
         } = this.state.data;
-
+        const display = this.state.display;
         return (
-            <div className="container" >
+            <div className={display?"showMore":"hideAll"} >
+            <div className="cardDetails">
                 <div className="subContainer">
                     <p>{stationName},<span>{location}</span></p>
                     <p>
@@ -44,8 +54,11 @@ export default class Card extends React.Component {
                         <img className="imgDim" src="https://img.icons8.com/ios/64/000000/place-marker.png" />
                     </button>
                 </div>
+                </div>
+                <div className={display?"show":"hide"}>
+                <Map stationName={stationName} street={street} contact={contact} openHours={openHours} mapSrc={mapSrc}/>
+                </div>
             </div>
         );
     }
 }
-
