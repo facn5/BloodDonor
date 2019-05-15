@@ -5,7 +5,7 @@ export const Map = ({ stationName, street, contact, openHours, mapSrc }) => (
   <>
   <div className='container-map'>
     <iframe className="map" src={mapSrc}></iframe>
-    <div className="bg">
+    <div className="detailsBg">
         </div>
     <div className="details ">
       <p><img src="https://img.icons8.com/wired/64/000000/hospital-3.png"/>  {stationName}</p>
