@@ -1,5 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header } from './components/header/header';
+import Card from './components/card/card.js'
 
-ReactDOM.render(<Header/>, document.getElementById('root'));
+ReactDOM.render(<div>
+  <Card />
+  <Card />
+  <Card />
+  <Card />
+  <Card />
+  <Card />
+  <Card />
+  <Card />
+  <Card /></div>, document.getElementById('root'));
