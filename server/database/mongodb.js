@@ -51,6 +51,18 @@ const insertOneInto = (colName, obj) => {
 
 insertOneInto('users', { name: 'majd' });
 
+let card = {
+stationName:"Rambam"
+location:"Haifa"}
+bloodType:"A+"}
+status:"Critical"}
+street:"s1231"}
+contact:"0526536395"}
+openHours:"11AM - 4PM"}
+mapSrc:
+  "https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed"
+}
+}
 // delete one into a colliction
 const deleteOneFrom = (colName, obj) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });

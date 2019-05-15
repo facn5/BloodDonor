@@ -1,0 +1,39 @@
+
+.showMore{
+  display: grid;
+  grid-template-rows:140px 450px;
+      margin-top: 10px;
+}
+.hideAll{
+  display: grid;
+  grid-template-rows:140px;
+    margin-top: 10px;
+}
+.cardDetails{
+  display: flex;
+  border: solid 1px;
+  background-color: #f77;
+  border-radius: 10px;
+  font-family: "ubuntu";
+  font-size: 16px;
+  width: 100%;
+}
+.subContainer {
+  padding: 15px;
+}
+
+.imgDim {
+  width:33px;
+  height: 33px;
+}
+
+button {
+  background: transparent;
+  border:0px;
+}
+.show{
+  display: block;
+}
+.hide{
+  display:none;
+}

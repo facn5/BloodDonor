@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
+import Card from "./card/card.js";
 import Search from "./search";
+
 class Main extends Component {
-  url = "https://jsonplaceholder.typicode.com/todos/1";
+  url = "https://jsonplaceholder.typicode.com/todos";
   constructor() {
     super();
-    this.state = {};
+    this.state = { cards: [] };
   }
 
   componentDidMount() {
@@ -18,14 +19,25 @@ class Main extends Component {
   render() {
     if (!this.state.cards) return <p>Loading...</p>;
     return (
-      <div>
-        <>
-          <Search />
-          <h1>{this.state.cards.id}</h1>
-          <h1>{this.state.cards.completed}</h1>
-          <h1>{this.state.cards.title}</h1>
-        </>
-      </div>
+      <>
+        <Search />
+        {
+          (this.state.display = this.state.cards.map(card => (
+            <Card
+              stationName={"Rambam"}
+              location={"Haifa"}
+              bloodType={"A+"}
+              status={"Critical"}
+              street={"s1231"}
+              contact={"0526536395"}
+              openHours={"11AM - 4PM"}
+              mapSrc={
+                "https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              }
+            />
+          )))
+        }
+      </>
     );
   }
 }
