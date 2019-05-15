@@ -3,10 +3,10 @@ import Card from "./card/card.js";
 import Search from "./search";
 
 class Main extends Component {
-  url = "https://jsonplaceholder.typicode.com/todos";
   constructor() {
     super();
     this.state = { cards: [] };
+    this.url = "https://jsonplaceholder.typicode.com/todos";
   }
 
   componentDidMount() {
