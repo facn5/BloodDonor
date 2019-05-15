@@ -1,6 +1,8 @@
 import React from "react";
 import './styles';
-import {Map} from './map/map.js';
+import { Map } from './map/map.js';
+import { FacebookShareButton,
+  FacebookIcon, } from 'react-share';
 
 export default class Card extends React.Component {
     state = {
@@ -46,8 +48,9 @@ export default class Card extends React.Component {
                     </p>
                     <p>{status}</p>
                 </div>
+
                 <div className="subContainer">
-                    <img className="imgDim" src="https://img.icons8.com/small/64/000000/share.png" />
+                <FacebookShareButton children=<img className="imgDim" src="https://img.icons8.com/small/64/000000/share.png" /> quote="testing quote" hashtag="#Save_A_Life" url="https://www.facebook.com/TheDigitalTech/"/>
                 </div>
                 <div className="subContainer">
                     <button onClick={this.displayMap}>
