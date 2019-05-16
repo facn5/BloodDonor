@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-// import Card from "../../components/card/card";
+import "./about.css";
 import TeamMember from "../../components/TeamMember/TeamMember";
-import { relative } from "path";
 
 const About = () => {
   return (
-    <div style={{ position: "relative", height: 94 + "vh" }}>
-      <h1 style={{ textAlign: "center" }}>About</h1>
+    <div className="about-container">
+      <h1 className="center">About</h1>
       <h3>Our goal</h3>
       <div className="cardDetails">
         <div className="subContainer">
@@ -15,23 +14,10 @@ const About = () => {
           your blood can.
         </div>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          width: 100 + "%",
-          bottom: 0
-        }}
-      >
+      <div className="teamMembers-section">
         Team:-
         <div className="cardDetails">
-          <div
-            className="subContainer"
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: 100 + "%"
-            }}
-          >
+          <div className="teamMembers-subcontainer">
             <TeamMember name="Tamer" />
             <TeamMember name="Obaydah" />
             <TeamMember name="Majd" />
