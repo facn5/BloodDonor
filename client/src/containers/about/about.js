@@ -4,7 +4,7 @@ import TeamMember from "../../components/TeamMember/TeamMember";
 
 const About = () => {
   return (
-    <div className="about-container">
+    <div className="aboutContainer">
       <h1 className="center">About</h1>
       <h3>Our goal</h3>
       <div className="cardDetails">
@@ -14,10 +14,10 @@ const About = () => {
           your blood can.
         </div>
       </div>
-      <div className="teamMembers-section">
-        Team:-
+      <div className="teamMembersSection">
+        <p>Team:-</p>
         <div className="cardDetails">
-          <div className="teamMembers-subcontainer">
+          <div className="teamMembersSubContainer">
             <TeamMember name="Tamer" />
             <TeamMember name="Obaydah" />
             <TeamMember name="Majd" />
