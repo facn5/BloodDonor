@@ -5,3 +5,4 @@ client/node_modules
 dist
 *.env
 keys_dev.js
+.DS_Store
