@@ -1,0 +1,21 @@
+.aboutContainer {
+  position: relative;
+  height: 94vh;
+}
+
+.center {
+  text-align: center;
+}
+
+.teamMembersSection {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.teamMembersSubContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 15px;
+}
