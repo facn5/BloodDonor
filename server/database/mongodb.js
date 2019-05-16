@@ -11,8 +11,8 @@ const findAllIn = (colName, query, cb) => {
     db.collection(colName)
       .find(query)
       .toArray((error, result) => {
-        if (error) throw error;
-        cb(result);
+        if (error) cb(error);
+        cb(null, result);
       });
     client.close();
   });
@@ -43,8 +43,8 @@ const insertOneInto = (colName, obj, cb) => {
   client.connect((err) => {
     if (err) throw err;
     const db = client.db('blooddonor');
-    db.collection(colName).insertOne(obj, (erro) => {
-      if (err) throw erro;
+    db.collection(colName).insertOne(obj, (error) => {
+      if (error) cb(error);
       cb(null, '1 document inserted');
     });
     client.close();
@@ -64,7 +64,10 @@ const card = {
   mapSrc:
     'https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed',
 };
-insertOneInto('cards', { card });
+
+// insertOneInto('cards', { card }, (res) => {
+//   console.log(res);
+// });
 
 // delete one into a colliction
 // eslint-disable-next-line no-unused-vars
@@ -81,4 +84,7 @@ const deleteOneFrom = (colName, obj, cb) => {
   });
 };
 
+module.exports = {
+  findAllIn,
+};
 // deleteOneFrom('users', { name: 'majd' });

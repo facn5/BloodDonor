@@ -1,28 +1,17 @@
 import React, { Component } from "react";
+import "./styles.css";
+
 import Card from "./card/card.js";
-import Search from "./search";
 
 class Main extends Component {
   constructor() {
     super();
     this.state = {
       search: "",
-      cards: [
-        {
-          stationName: "zzzzzzzzzzzzzzzzzzzzRambam",
-          location: "Haifa",
-          bloodType: "A+",
-          status: "Critical",
-          street: "s1231",
-          contact: "0526536395",
-          openHours: "11AM - 4PM",
-          mapSrc:
-            "https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        }
-      ],
+      cards: [],
       str: ""
     };
-    this.url = "https://jsonplaceholder.typicode.com/todos";
+    this.url = "/getCards";
   }
 
   componentDidMount() {
@@ -40,36 +29,57 @@ class Main extends Component {
   }
   render() {
     const { cards, search } = this.state;
-    if (!cards) return <p>Loading..</p>;
+    if (cards.length === 0)
+      return (
+        <div className="input">
+          <input
+            type="search"
+            value={search}
+            onChange={this.handleSearch.bind(this)}
+            placeholder="Type here"
+          />
+          <p>Loading..</p>
+        </div>
+      );
     return (
       <>
         <input
-          type="text"
+          type="search"
           value={search}
           onChange={this.handleSearch.bind(this)}
           placeholder="Type here"
         />
         <hr />
 
-        {cards
-          .filter(card => {
-            console.log(card);
+        {
+          (console.log(cards.oo),
+          cards.oo
+            .filter(c => {
+              console.log(c.card);
 
-            if (card.stationName.includes(search) > -1) return card;
-          })
-          .slice(0, 0)
-          .map(card => (
-            <Card
-              stationName={card.stationName}
-              location={card.location}
-              bloodType={card.bloodType}
-              status={card.status}
-              street={card.street}
-              contact={card.contact}
-              openHours={card.openHours}
-              mapSrc={card.mapSrc}
-            />
-          ))}
+              if (
+                c.card.stationName
+                  .toLowerCase()
+                  .includes(search.toLowerCase()) ||
+                c.card.location.toLowerCase().includes(search.toLowerCase()) ||
+                c.card.bloodType.toLowerCase().includes(search.toLowerCase())
+              )
+                return c.card;
+            })
+            .slice(0, 10)
+            .map(card => (
+              <Card
+                stationName={card.stationName}
+                location={card.location}
+                bloodType={card.bloodType}
+                status={card.status}
+                street={card.street}
+                contact={card.contact}
+                openHours={card.openHours}
+                mapSrc={card.mapSrc}
+              />
+            )))
+        }
       </>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles";
+import "./styles.css";
 import { Map } from "./map/map.js";
 
 export default class Card extends React.Component {
@@ -45,7 +45,7 @@ export default class Card extends React.Component {
             </p>
             <p>
               <img
-                className="imgDim"
+                className="imgDim1"
                 src="https://img.icons8.com/pastel-glyph/64/000000/--bloodbag.png"
               />
               {bloodType}
