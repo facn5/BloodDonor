@@ -1,25 +1,11 @@
 import React, { Component } from "react";
+import "./TeamMember.css";
 
 const TeamMember = props => {
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: 100 + "%"
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#FFF",
-            borderRadius: "50%",
-            height: 50,
-            width: 50
-          }}
-        />
+      <div className="member-container">
+        <div className="member-subcontainer" />
         <div>{props.name}</div>
       </div>
     </>

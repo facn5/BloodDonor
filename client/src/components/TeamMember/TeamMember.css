@@ -1,0 +1,14 @@
+.member-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.member-subcontainer {
+  background-color: #fff;
+  border-radius: 5%px;
+  height: 50px;
+  width: 50px;
+}
