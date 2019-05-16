@@ -1,150 +1,147 @@
-
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-
 
 .logo {
-    color:red;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size:1.5rem;
+  color: red;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1.5rem;
 }
 
-
 .mobile-navBar {
-    cursor: pointer;
-    display: none;
+  cursor: pointer;
+  display: none;
 }
 
 .mobile-navBar div {
-    width: 25px;
-    height: 5px;
-    background-color: #FFF;
-    margin: 5px;
-    transition: all 0.3s ease;
+  width: 25px;
+  height: 5px;
+  background-color: #fff;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  position: relative;
+  height: 15vh;
 }
 
 .nav {
-    position: fixed;
-    z-index: 100;
-    margin-top:1%;
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 5vh;
-    transition: background .4s ease;
+  position: fixed;
+  z-index: 100;
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  transition: background 0.4s ease;
 }
 
 .nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 44%;
+  display: flex;
+  justify-content: space-around;
+  width: 44%;
 }
 
 .nav-links li {
-    list-style: none;
+  list-style: none;
 }
 
 .nav-links a {
-    color:black;
-    letter-spacing: 1.2px;
-    font-size:0.85rem;
-    opacity: 0.9;
-    border-width: thin;
-    transition: opacity 0.4s ease, border 0.4s ease;
-    border-bottom: 3px transparent solid;
+  color: black;
+  letter-spacing: 1.2px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  border-width: thin;
+  transition: opacity 0.4s ease, border 0.4s ease;
+  border-bottom: 3px transparent solid;
 }
 
 .scrolled {
-    background-color: white;
+  background-color: white;
 }
 
 .scrolled .nav-links a {
-    color:black;
+  color: black;
 }
 
 .nav-links a:hover {
-    border-bottom-color: black;
-    opacity: 1;
+  border-bottom-color: black;
+  opacity: 1;
 }
-
 
 .logo a {
-    float:left;
+  float: left;
 }
 
-@media screen and (max-width:1024px) {
-
-    .nav-links {
-        width: 60%;
-    }
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 60%;
+  }
 }
 
-@media screen and (max-width:768px) {
-
-    .nav-links {
-        position: absolute;
-        right: 0px;
-        height:92vh;
-        top: 100%;
-        font-size:1.1rem;
-        display: flex;
-        justify-content: flex-start;
-        background-color: black;
-        opacity:0.8;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-    }
-    .logo p {
-        padding:30px;
-        color: black;
-
-    }
-    .nav {
-        background: #AA0000;
-        margin-top:0;
-    }
-    .nav-links a {
-        color:white;
-    }
-    .nav-links li {
-        opacity: 0;
-        margin: 5%;
-    }
-    .mobile-navBar {
-        display: block;
-    }
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 100%;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: black;
+    opacity: 0.8;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+  .logo p {
+    padding: 30px;
+    color: black;
+  }
+  .nav {
+    background: #aa0000;
+    margin-top: 0;
+  }
+  .nav-links a {
+    color: white;
+  }
+  .nav-links li {
+    opacity: 0;
+    margin: 5%;
+  }
+  .mobile-navBar {
+    display: block;
+  }
 }
 
 .nav-active {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 @keyframes navLinkFade {
-    from{
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
 .toggle .line1 {
-    transform: rotate(-45deg) translate(-5px,6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 .toggle .line2 {
-    opacity: 0;
+  opacity: 0;
 }
 
 .toggle .line3 {
-    transform: rotate(45deg) translate(-8px,-8.5px);
-
+  transform: rotate(45deg) translate(-8px, -8.5px);
 }

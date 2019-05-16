@@ -18,7 +18,6 @@ const findAllIn = (colName, query, cb) => {
   });
 };
 
-
 // find one in a colletion
 // eslint-disable-next-line no-unused-vars
 const findOneIn = (colName, query, cb) => {
@@ -34,7 +33,6 @@ const findOneIn = (colName, query, cb) => {
   });
 };
 
-
 // insert one into a colliction
 const insertOneInto = (colName, obj, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
@@ -48,7 +46,6 @@ const insertOneInto = (colName, obj, cb) => {
     client.close();
   });
 };
-
 
 const card = {
   stationName: 'Rambam',
