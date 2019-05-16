@@ -2,12 +2,7 @@ import React, { Component } from "react";
 
 class Search extends Component {
   render() {
-    return (
-      <div>
-        <input type="text" className="input" placeholder="Search..." />
-        <hr />
-      </div>
-    );
+    return <h1>test</h1>;
   }
 }
 
