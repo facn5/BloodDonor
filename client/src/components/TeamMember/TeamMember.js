@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "./TeamMember.css";
+import "../card/styles.css";
 
 const TeamMember = props => {
   return (
     <>
-      <div className="member-container">
-        <div className="member-subcontainer" />
+      <div className="memberContainer">
+        <div className="memberSubContainer" />
         <div>{props.name}</div>
       </div>
     </>
   );
 };
 
-export default User;
+export default TeamMember;
