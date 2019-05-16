@@ -10,10 +10,10 @@ import {
 import { Header } from "./components/header/header";
 import Card from "./components/card/card";
 import Login from "./components/login/login";
-import Signup from "./components/signup/signup";
+import Signup from "./containers/signup/signup";
 import Inspiration from "./components/inspiration/inspiration";
 import Regform from "./components/regform/regform";
-import About from "./components/about/about";
+import About from "./containers/about/about";
 import Main from "./components/main.js";
 
 export default class App extends Component {
