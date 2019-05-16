@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const { mongoURI } = require('../../keys_dev');
 
 // find all in a colletion
-const findAllIn = (colName, query) => {
+const findAllIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
@@ -10,14 +10,13 @@ const findAllIn = (colName, query) => {
     db.collection(colName)
       .find(query)
       .toArray((error, result) => {
-        if (error) throw error;
-        console.log(result);
+        if (error)cb(error);
+        cb(null, result);
       });
     client.close();
   });
 };
 
-findAllIn('users', { name: 'majd' });
 
 // find one in a colletion
 const findOneIn = (colName, query) => {
@@ -33,7 +32,6 @@ const findOneIn = (colName, query) => {
   });
 };
 
-findOneIn('users', { name: 'majd' });
 
 // insert one into a colliction
 const insertOneInto = (colName, obj) => {
@@ -49,7 +47,6 @@ const insertOneInto = (colName, obj) => {
   });
 };
 
-insertOneInto('users', { name: 'majd' });
 
 // delete one into a colliction
 const deleteOneFrom = (colName, obj) => {
@@ -65,4 +62,6 @@ const deleteOneFrom = (colName, obj) => {
   });
 };
 
-deleteOneFrom('users', { name: 'majd' });
+module.exports = {
+  findAllIn,
+};
