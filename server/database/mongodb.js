@@ -17,7 +17,6 @@ const findAllIn = (colName, query, cb) => {
   });
 };
 
-// findAllIn('users', { name: 'majd' });
 
 // find one in a colletion
 const findOneIn = (colName, query) => {
@@ -33,7 +32,6 @@ const findOneIn = (colName, query) => {
   });
 };
 
-// findOneIn('users', { name: 'majd' });
 
 // insert one into a colliction
 const insertOneInto = (colName, obj) => {
@@ -49,7 +47,6 @@ const insertOneInto = (colName, obj) => {
   });
 };
 
-// insertOneInto('users', { name: 'majd' });
 
 // delete one into a colliction
 const deleteOneFrom = (colName, obj) => {
@@ -68,4 +65,3 @@ const deleteOneFrom = (colName, obj) => {
 module.exports = {
   findAllIn,
 };
-// deleteOneFrom('users', { name: 'majd' });
