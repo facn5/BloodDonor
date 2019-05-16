@@ -18,7 +18,6 @@ const findAllIn = (colName, query, cb) => {
   });
 };
 
-// findAllIn('users', { name: 'majd' });
 
 // find one in a colletion
 // eslint-disable-next-line no-unused-vars
@@ -35,7 +34,6 @@ const findOneIn = (colName, query, cb) => {
   });
 };
 
-// findOneIn('users', { name: 'majd' });
 
 // insert one into a colliction
 const insertOneInto = (colName, obj, cb) => {
@@ -51,7 +49,6 @@ const insertOneInto = (colName, obj, cb) => {
   });
 };
 
-// insertOneInto('users', { name: 'majd' });
 
 const card = {
   stationName: 'Rambam',
@@ -87,4 +84,3 @@ const deleteOneFrom = (colName, obj, cb) => {
 module.exports = {
   findAllIn,
 };
-// deleteOneFrom('users', { name: 'majd' });

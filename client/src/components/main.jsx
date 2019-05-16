@@ -23,8 +23,6 @@ class Main extends Component {
   }
 
   handleSearch(e) {
-    console.log(e.target.value);
-
     this.setState({ search: e.target.value });
   }
   render() {
@@ -51,35 +49,30 @@ class Main extends Component {
         />
         <hr />
 
-        {
-          (console.log(cards.oo),
-          cards.oo
-            .filter(c => {
-              console.log(c.card);
+        {cards.data
+          .filter(c => {
+            console.log(c);
 
-              if (
-                c.card.stationName
-                  .toLowerCase()
-                  .includes(search.toLowerCase()) ||
-                c.card.location.toLowerCase().includes(search.toLowerCase()) ||
-                c.card.bloodType.toLowerCase().includes(search.toLowerCase())
-              )
-                return c.card;
-            })
-            .slice(0, 10)
-            .map(card => (
-              <Card
-                stationName={card.stationName}
-                location={card.location}
-                bloodType={card.bloodType}
-                status={card.status}
-                street={card.street}
-                contact={card.contact}
-                openHours={card.openHours}
-                mapSrc={card.mapSrc}
-              />
-            )))
-        }
+            if (
+              c.card.stationName.toLowerCase().includes(search.toLowerCase()) ||
+              c.card.location.toLowerCase().includes(search.toLowerCase()) ||
+              c.card.bloodType.toLowerCase().includes(search.toLowerCase())
+            )
+              return c.card;
+          })
+          .slice(0, 10)
+          .map(card => (
+            <Card
+              stationName={card.stationName}
+              location={card.location}
+              bloodType={card.bloodType}
+              status={card.status}
+              street={card.street}
+              contact={card.contact}
+              openHours={card.openHours}
+              mapSrc={card.mapSrc}
+            />
+          ))}
       </>
     );
   }

@@ -1,0 +1,15 @@
+.memberContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.memberSubContainer {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+}
