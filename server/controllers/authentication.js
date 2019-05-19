@@ -4,54 +4,63 @@ const utils = require('../utils');
 const ppcookie = require("cookie");
 const { SECRET } = require('../../keys_dev');
 
-exports.signup = (body, res) => {
-  if (body) {
-    database.findOneIn(
-      'users',
-      { username: body.username },
-      (checkErr, result) => {
-        if (checkErr) {
-          res.json({ success: false, result: 'Please try again later!' });
-        }
-        if (result == null) {
-          utils.hash(body.password, (utilErr, hashedPassword) => {
-            if (utilErr) {
-              res.json({ success: false, result: 'Please try again later!' });
-            } else {
-              database.insertOneInto(
-                'users',
-                {
-                  username: body.username,
-                  password: hashedPassword,
-                  phoneNumber: body.phoneNumber
-                },
-                (insertErr, success) => {
-                  if (insertErr || !success) {
-                    res.json({
-                      success: false,
-                      result: 'Please try again later!'
-                    });
-                  } else {
-                    const userDetails = {
-                      username: body.user
-                    };
-                    const cookie = sign(userDetails, SECRET);
+exports.signup = ({ username, password, phoneNumber }, res) => {
+  if (username && password && phoneNumber) {
+    if (
+      username instanceof String &&
+      password instanceof String &&
+      phoneNumber instanceof String
+    ) {
+      if (
+        phoneNumber.length === 10 &&
+        password.length >= 6 &&
+        username.length >= 3 &&
+        /\d/.test(phoneNumber)
+      ) {
+        database.findOneIn('users', { username }, (checkErr, result) => {
+          if (checkErr) {
+            res.json({ success: false, result: 'Please try again later!' });
+          }
+          if (result == null) {
+            utils.hash(password, (utilErr, hashedPassword) => {
+              if (utilErr) {
+                res.json({ success: false, result: 'Please try again later!' });
+              } else {
+                database.insertOneInto(
+                  'users',
+                  {
+                    username,
+                    password: hashedPassword,
+                    phoneNumber
+                  },
+                  (insertErr, success) => {
+                    if (insertErr || !success) {
+                      res.json({
+                        success: false,
+                        result: 'Please try again later!'
+                      });
+                    } else {
+                      const userDetails = {
+                        username
+                      };
+                      const cookie = sign(userDetails, SECRET);
 
-                    res.cookie('jwt', cookie, {
-                      httpOnly: true
-                    });
-                    res.json({
-                      success: true,
-                      result: 'Signed up successfully!'
-                    });
+                      res.cookie('jwt', cookie, {
+                        httpOnly: true
+                      });
+                      res.json({
+                        success: true,
+                        result: 'Signed up successfully!'
+                      });
+                    }
                   }
-                }
-              );
-            }
-          });
-        } else res.json({ success: false, result: 'User already exists!' });
+                );
+              }
+            });
+          } else res.json({ success: false, result: 'User already exists!' });
+        });
       }
-    );
+    }
   }
 };
 
