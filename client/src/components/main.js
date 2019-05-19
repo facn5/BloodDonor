@@ -12,19 +12,34 @@ class Main extends Component {
       str: ""
     };
     this.url = "/getCards";
+    // this.updateDisplay = this.updateDisplay.bind(this);
   }
 
   componentDidMount() {
     fetch(this.url)
-      .then(d => d.json())
+      .then(res => res.json())
       .then(d => {
-        this.setState({ cards: d });
+        this.setState({
+          cards: d.data.map(card => {
+            return { ...card, active: false };
+          })
+        });
       });
   }
+
+  updateDisplay = id => {
+    this.state.cards.map(c => {
+      if (c._id === id) {
+        c.active = !c.active;
+      } else c.active = false;
+    });
+    this.setState({ state: this.state });
+  };
 
   handleSearch(e) {
     this.setState({ search: e.target.value });
   }
+
   render() {
     const { cards, search } = this.state;
     if (cards.length === 0)
@@ -49,7 +64,7 @@ class Main extends Component {
         />
         <hr />
 
-        {cards.data
+        {cards
           .filter(c => {
             if (
               c.card.stationName.toLowerCase().includes(search.toLowerCase()) ||
@@ -61,6 +76,7 @@ class Main extends Component {
           .slice(0, 10)
           .map(card => (
             <Card
+              id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}
               bloodType={card.card.bloodType}
@@ -69,6 +85,8 @@ class Main extends Component {
               contact={card.card.contact}
               openHours={card.card.openHours}
               mapSrc={card.card.mapSrc}
+              active={card.active}
+              triggerDisplay={this.updateDisplay}
             />
           ))}
       </>
