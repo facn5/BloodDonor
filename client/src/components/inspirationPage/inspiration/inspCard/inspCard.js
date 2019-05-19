@@ -1,14 +1,11 @@
 import React from 'react';
 import './inspCard.css';
 
-export const InspCardDetails = ({ imgSrc, description }) => (
+export const InspCardDetails = ({ description,isVisible }) => (
   <>
-    <div className='container-inspCardDetails'>
+    <div className={isVisible?'container-inspCardDetails':'container-inspCardDetails hide'}>
       <div>
-        <img className="img" src={imgSrc} />
-      </div>
-      <div>
-        <p className="description">desc hide:{description}</p>
+        <p className="description">desc hidessssssssssssssssssssssssssssssss sda sda wawd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd ad :{description}</p>
       </div>
     </div>
   </>
