@@ -8,13 +8,13 @@ const Signup = () => {
       <form method="POST" action="/signup">
         <input name="username" placeholder="Username" type="text" />
         <input
-          autoComplete="true"
+          autoComplete="on"
           name="password"
           placeholder="Password"
           type="password"
         />
         <input
-          autoComplete="true"
+          autoComplete="on"
           placeholder="Retype password"
           type="password"
         />
