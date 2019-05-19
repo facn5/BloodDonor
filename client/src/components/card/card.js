@@ -8,20 +8,13 @@ import {
 } from "react-share";
 
 export default class Card extends React.Component {
-  state = {
-    data: {
-      stationName: "Rambam",
-      location: "Haifa",
-      bloodType: "A+",
-      status: "Critical",
-      street: "s1231",
-      contact: "0526536395",
-      openHours: "11AM - 4PM",
-      mapSrc:
-        "https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    },
-    display: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {},
+      display: false
+    };
+  }
 
   displayMap = () => {
     this.setState(prevState => {
@@ -30,6 +23,8 @@ export default class Card extends React.Component {
   };
 
   render() {
+    console.log(this.props);
+
     const {
       stationName,
       bloodType,
@@ -39,7 +34,7 @@ export default class Card extends React.Component {
       contact,
       openHours,
       mapSrc
-    } = this.state.data;
+    } = this.props;
     const display = this.state.display;
     return (
       <div className={display ? "showMore" : "hideAll"}>

@@ -51,8 +51,6 @@ class Main extends Component {
 
         {cards.data
           .filter(c => {
-            console.log(c);
-
             if (
               c.card.stationName.toLowerCase().includes(search.toLowerCase()) ||
               c.card.location.toLowerCase().includes(search.toLowerCase()) ||
@@ -61,18 +59,23 @@ class Main extends Component {
               return c.card;
           })
           .slice(0, 10)
-          .map(card => (
-            <Card
-              stationName={card.stationName}
-              location={card.location}
-              bloodType={card.bloodType}
-              status={card.status}
-              street={card.street}
-              contact={card.contact}
-              openHours={card.openHours}
-              mapSrc={card.mapSrc}
-            />
-          ))}
+          .map(
+            card => (
+              console.log(card.card.location),
+              (
+                <Card
+                  stationName={card.card.stationName}
+                  location={card.card.location}
+                  bloodType={card.card.bloodType}
+                  status={card.card.status}
+                  street={card.card.street}
+                  contact={card.card.contact}
+                  openHours={card.card.openHours}
+                  mapSrc={card.card.mapSrc}
+                />
+              )
+            )
+          )}
       </>
     );
   }

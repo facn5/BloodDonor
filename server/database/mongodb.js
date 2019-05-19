@@ -46,17 +46,16 @@ const insertOneInto = (colName, obj, cb) => {
     client.close();
   });
 };
-
+const url = 'https://www.google.com/maps/embed?pb=';
 const card = {
-  stationName: 'Rambam',
-  location: 'Haifa',
-  bloodType: 'A+',
+  stationName: 'Wolfson Medical Center',
+  location: 'Holon',
+  bloodType: 'O-',
   status: 'Critical',
-  street: 's1231',
-  contact: '0526536395',
-  openHours: '11AM - 4PM',
-  mapSrc:
-    'https://maps.google.com/maps?q=rambam&t=&z=13&ie=UTF8&iwloc=&output=embed',
+  street: 'Ha-Lokhamim St 62',
+  contact: '03-502-8111',
+  openHours: '8AM - 12AM',
+  mapSrc: `${url}!1m18!1m12!1m3!1d214543.62155329392!2d35.27562295560184!3d32.838788370051596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151dce702593ec2d%3A0x9f0d03dba0a49fdd!2sGalilee+Medical+Center!5e0!3m2!1sen!2sil!4v1558107992086!5m2!1sen!2sil`,
 };
 
 // insertOneInto('cards', { card }, (res) => {
