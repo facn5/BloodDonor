@@ -1,14 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Card from './components/card/card.js'
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Header } from "./components/header/header";
+import Login from "./components/login/login";
+import Signup from "./containers/signup/signup";
+import Inspiration from "./components/inspiration/inspiration";
+import Regform from "./components/regform/regform";
+import About from "./containers/about/about";
+import Main from "./components/main.js";
 
-ReactDOM.render(<div>
-  <Card />
-  <Card />
-  <Card />
-  <Card />
-  <Card />
-  <Card />
-  <Card />
-  <Card />
-  <Card /></div>, document.getElementById('root'));
+const app = () => {
+  return (
+    <Router>
+      <Route component={Header} />
+      <Route path="/" exact component={Main} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/signup" exact component={Signup} />
+      <Route path="/inspiration" exact component={Inspiration} />
+      <Route path="/regform" exact component={Regform} />
+      <Route path="/about" exact component={About} />
+    </Router>
+  );
+};
+
+export default app;

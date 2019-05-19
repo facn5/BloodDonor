@@ -1,0 +1,17 @@
+body input {
+  display: grid;
+  grid-template-rows: 2rem auto;
+}
+
+input[type="search"] {
+  background: url("https://img.icons8.com/android/24/000000/search.png")
+    no-repeat;
+  background-position: 95%;
+  width: 20rem;
+  height: 2.4rem;
+  padding-left: 1rem;
+  border: 2px solid #ff7777;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+}

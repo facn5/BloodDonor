@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 const { mongoURI } = require('../../keys_dev');
 
-// find all in a colletion
+// eslint-disable-next-line no-unused-vars
 const findAllIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
@@ -10,53 +10,66 @@ const findAllIn = (colName, query, cb) => {
     db.collection(colName)
       .find(query)
       .toArray((error, result) => {
-        if (error)cb(error);
+        if (error) cb(error);
         cb(null, result);
       });
     client.close();
   });
 };
 
-
-// find one in a colletion
-const findOneIn = (colName, query) => {
+// eslint-disable-next-line no-unused-vars
+const findOneIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
     const col = client.db('blooddonor');
     col.collection(colName).findOne(query, (error, res) => {
-      if (error) console.log(error);
-      console.log(res);
+      if (error) cb(error);
+      cb(res);
     });
     client.close();
   });
 };
 
-
-// insert one into a colliction
-const insertOneInto = (colName, obj) => {
+// eslint-disable-next-line no-unused-vars
+const insertOneInto = (colName, obj, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
     const db = client.db('blooddonor');
-    db.collection(colName).insertOne(obj, (erro) => {
-      if (err) throw erro;
-      console.log('1 document inserted');
+    db.collection(colName).insertOne(obj, (error) => {
+      if (error) cb(error);
+      cb(null, '1 document inserted');
     });
     client.close();
   });
 };
 
+const url = 'https://www.google.com/maps/embed?pb=';
+const card = {
+  stationName: 'Wolfson Medical Center',
+  location: 'Holon',
+  bloodType: 'O-',
+  status: 'Critical',
+  street: 'Ha-Lokhamim St 62',
+  contact: '03-502-8111',
+  openHours: '8AM - 12AM',
+  mapSrc: `${url}!1m18!1m12!1m3!1d214543.62155329392!2d35.27562295560184!3d32.838788370051596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151dce702593ec2d%3A0x9f0d03dba0a49fdd!2sGalilee+Medical+Center!5e0!3m2!1sen!2sil!4v1558107992086!5m2!1sen!2sil`,
+};
 
-// delete one into a colliction
-const deleteOneFrom = (colName, obj) => {
+// insertOneInto('cards', { card }, (res) => {
+//   console.log(res);
+// });
+
+// eslint-disable-next-line no-unused-vars
+const deleteOneFrom = (colName, obj, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
     const db = client.db('blooddonor');
-    db.collection(colName).deleteOne(obj, (erro) => {
-      if (err) throw erro;
-      console.log('1 document deleted');
+    db.collection(colName).deleteOne(obj, (error) => {
+      if (error) cb(error);
+      cb(null, '1 Record have been deleted');
     });
     client.close();
   });
