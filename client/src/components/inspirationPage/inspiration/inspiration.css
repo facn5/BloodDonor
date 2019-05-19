@@ -1,0 +1,28 @@
+.container-inspCard{
+  display: grid;
+  grid-template-rows: 9rem auto;
+  margin-top:10px;
+}
+.container-card{
+  display:grid;
+  grid-template-columns: 40% 60%;
+  background-color: #f77;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  height: 130px;
+  width: 90%;
+  z-index: 1;
+}
+.shortDescription{
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 42ch;
+}
+.img{
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
