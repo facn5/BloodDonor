@@ -59,23 +59,18 @@ class Main extends Component {
               return c.card;
           })
           .slice(0, 10)
-          .map(
-            card => (
-              console.log(card.card.location),
-              (
-                <Card
-                  stationName={card.card.stationName}
-                  location={card.card.location}
-                  bloodType={card.card.bloodType}
-                  status={card.card.status}
-                  street={card.card.street}
-                  contact={card.card.contact}
-                  openHours={card.card.openHours}
-                  mapSrc={card.card.mapSrc}
-                />
-              )
-            )
-          )}
+          .map(card => (
+            <Card
+              stationName={card.card.stationName}
+              location={card.card.location}
+              bloodType={card.card.bloodType}
+              status={card.card.status}
+              street={card.card.street}
+              contact={card.card.contact}
+              openHours={card.card.openHours}
+              mapSrc={card.card.mapSrc}
+            />
+          ))}
       </>
     );
   }

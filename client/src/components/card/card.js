@@ -19,12 +19,10 @@ export default class Card extends React.Component {
   displayMap = () => {
     this.setState(prevState => {
       return { display: !prevState.display };
-    }, console.log(this.state.display));
+    });
   };
 
   render() {
-    console.log(this.props);
-
     const {
       stationName,
       bloodType,
@@ -40,9 +38,8 @@ export default class Card extends React.Component {
       <div className={display ? "showMore" : "hideAll"}>
         <div className="cardDetails">
           <div className="subContainer">
-            <p>
-              {stationName},<span>{location}</span>
-            </p>
+            <p>{stationName},</p>
+            <p>{location},</p>
             <p>
               <img
                 className="imgDim1"
@@ -53,12 +50,9 @@ export default class Card extends React.Component {
             <p>{status}</p>
           </div>
 
-          <div className="subContainer">
+          <div className="subContainer facebook">
             <FacebookShareButton
-              children=<div>
-                <FacebookIcon round={true} size={39} />
-                <FacebookShareCount url="https://www.facebook.com/TheDigitalTech/" />{" "}
-              </div>
+              children={<FacebookIcon round={true} size={40} />}
               quote="You can save his life! Be his hero"
               hashtag="#Save_A_Life"
               url="https://www.facebook.com/TheDigitalTech/"

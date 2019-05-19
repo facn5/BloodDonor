@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-class Regform extends Component {
-    render() {
-        return (<div>Hello from Regform</div>);
-    }
-}
-
-export default Regform;
+export const Regform = () => {
+  return <div>Hello from Regform</div>;
+};
