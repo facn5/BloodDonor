@@ -17,4 +17,8 @@ router.post('/signup', ({ body }, res) => {
   authentication.signup(body, res);
 });
 
+router.post('/signin', ({ body }, res) => {
+  authentication.signin(body, res);
+});
+
 module.exports = router;
