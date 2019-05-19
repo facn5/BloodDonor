@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const { mongoURI } = require('../../key_dev');
+const { mongoURI } = require('../../keys_dev');
 
 // find all in a colletion
 // eslint-disable-next-line no-unused-vars

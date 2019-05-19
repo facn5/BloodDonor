@@ -17,7 +17,7 @@ export class Header extends React.Component {
     if (this.state.animate === '') this.setState({ animate: 'navLinkFade 0.5s ease forwards' });
     else this.setState({ animate: '' });
 
-    if (this.state.burger === 'mobile-navBar') this.setState({ mbNavBarClass: 'mobile-navBar toggle' });
+    if (this.state.mbNavBarClass === 'mobile-navBar') this.setState({ mbNavBarClass: 'mobile-navBar toggle' });
     else this.setState({ mbNavBarClass: 'mobile-navBar' });
   };
 
