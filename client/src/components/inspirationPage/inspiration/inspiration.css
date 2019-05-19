@@ -13,7 +13,25 @@
   height: 130px;
   width: 90%;
   z-index: 1;
+
 }
+@keyframes animopen {
+  from {border-bottom-right-radius:0%;
+    border-bottom-left-radius:0%;
+  }
+ to {border-bottom-right-radius:50%;
+ border-bottom-left-radius:50%;
+}
+}
+
+.container-card--opened{
+  animation-name: animopen;
+  animation-duration:2.5s;
+  border-bottom-right-radius:50%;
+   border-bottom-left-radius:50%;
+}
+
+
 .shortDescription{
   white-space: nowrap;
   overflow: hidden;
@@ -25,4 +43,7 @@
   margin: 0 auto;
   width: 80px;
   height: 80px;
+}
+.hideall{
+  display: none !important;
 }
