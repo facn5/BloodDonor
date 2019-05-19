@@ -13,7 +13,7 @@ router.get('*', (req, res) => {
   );
 });
 
-router.post('/signup1', ({ body }, res) => {
+router.post('/signup', ({ body }, res) => {
   authentication.signup(body, res);
 });
 
