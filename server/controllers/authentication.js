@@ -1,6 +1,7 @@
 const { sign, verify } = require('jsonwebtoken');
 const database = require('../database/mongodb');
 const utils = require('../utils');
+const ppcookie = require("cookie");
 const { SECRET } = require('../../keys_dev');
 
 exports.signup = (body, res) => {
@@ -83,11 +84,11 @@ exports.signin = (body, res) => {
             });
           } else {
             const userDetails = {
-              username: body.user
+              u$u: body.user
             };
             const cookie = sign(userDetails, SECRET);
 
-            res.cookie('jwt', cookie, {
+            res.cookie('udetails', cookie, {
               httpOnly: true
             });
             res.json({
@@ -99,4 +100,30 @@ exports.signin = (body, res) => {
       }
     }
   );
+};
+
+exports.checkCookies = (req, res) => {
+  if (!req.headers.cookie) res.json({ authenticated: false });
+  else {
+    let jwt;
+    try {
+      jwt = ppcookie.parse(req.headers.cookie);
+    } catch (error) {
+      res.json({ authenticated: false });
+    }
+    if( jwt ) {
+      verify(jwt.udetails, process.env.SECRET, (err, userCookie) => {
+        if (err)
+        res.json({ authenticated: false });
+
+        const { u$u } = userCookie;
+
+        database.findOneIn('users', { username: u$u }, (err, success) => {
+          if( err || !success )      res.json({ authenticated: false });
+          else res.json({ authenticated: true });
+
+
+        })
+    }
+  }
 };
