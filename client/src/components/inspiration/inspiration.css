@@ -1,0 +1,13 @@
+.container-inspCard{
+  display: grid;
+  grid-template-rows: 9rem auto;
+}
+.container-card{
+  display:grid;
+  grid-template-columns: 40% 60%;
+}
+.shortDescription{
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 42ch;
+}
