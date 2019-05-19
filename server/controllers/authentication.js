@@ -1,5 +1,7 @@
+const { sign, verify } = require('jsonwebtoken');
 const database = require('../database/mongodb');
 const utils = require('../utils');
+const SECRET = 'poiugyfguhijokpkoihugyfyguhijo';
 
 exports.signup = (body, res) => {
   database.findOneIn(
@@ -28,6 +30,12 @@ exports.signup = (body, res) => {
                     result: 'Please try again later!'
                   });
                 } else {
+                  const userDetails = { username: body.user, logged_in: true };
+                  const cookie = sign(userDetails, SECRET);
+
+                  res.cookie('jwt', cookie, {
+                    httpOnly: true
+                  });
                   res.json({
                     success: true,
                     result: 'Signed up successfully!'
