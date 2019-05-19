@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Header } from "./components/header/header";
 import Login from "./components/login/login";
 import Signup from "./containers/signup/signup";
-import Inspiration from "./components/inspiration/inspiration";
+import { Inspiration } from "./components/inspiration/inspiration";
 import Regform from "./components/regform/regform";
 import About from "./containers/about/about";
 import Main from "./components/main.js";
