@@ -7,10 +7,15 @@ const Signin = props => (
 
     <form className="signInForm" method="POST" action="/signin">
       <input name="username" type="text" placeholder="username" />
-      <input name="password" type="password" placeholder="password" />
+      <input
+        autoComplete="off"
+        name="password"
+        type="password"
+        placeholder="password"
+      />
 
       <button className="center" type="submit">
-        Sign in
+        Sign in!
       </button>
     </form>
 
