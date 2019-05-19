@@ -1,7 +1,6 @@
 const { MongoClient } = require('mongodb');
 const { mongoURI } = require('../../keys_dev');
 
-// find all in a colletion
 // eslint-disable-next-line no-unused-vars
 const findAllIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
@@ -18,7 +17,6 @@ const findAllIn = (colName, query, cb) => {
   });
 };
 
-// find one in a colletion
 // eslint-disable-next-line no-unused-vars
 const findOneIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
@@ -33,7 +31,7 @@ const findOneIn = (colName, query, cb) => {
   });
 };
 
-// insert one into a colliction
+// eslint-disable-next-line no-unused-vars
 const insertOneInto = (colName, obj, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
@@ -46,6 +44,7 @@ const insertOneInto = (colName, obj, cb) => {
     client.close();
   });
 };
+
 const url = 'https://www.google.com/maps/embed?pb=';
 const card = {
   stationName: 'Wolfson Medical Center',
@@ -62,7 +61,6 @@ const card = {
 //   console.log(res);
 // });
 
-// delete one into a colliction
 // eslint-disable-next-line no-unused-vars
 const deleteOneFrom = (colName, obj, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
