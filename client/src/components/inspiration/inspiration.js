@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './inspiration.css';
 import  {InspCardDetails}  from "./inspCard/inspCard.js";
 
 export const Inspiration = ({ title, imgSrc, desc }) => (
