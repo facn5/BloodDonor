@@ -130,3 +130,7 @@ exports.checkCookies = (req, res) => {
     }
   }
 };
+
+exports.logout = (req, res) => {
+  if (req.headers.cookie) res.clearCookie("udetails");
+};
