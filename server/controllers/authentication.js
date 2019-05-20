@@ -1,29 +1,29 @@
-const { sign, verify } = require("jsonwebtoken");
+const { sign, verify } = require('jsonwebtoken');
+const ppcookie = require("cookie");
 const database = require("../database/mongodb");
 const utils = require("../utils");
-const ppcookie = require("cookie");
-const { SECRET } = require("../../keys_dev");
+const { SECRET } = require('../../keys_dev');
 
 exports.signup = ({ username, password, phoneNumber }, res) => {
   if (username && password && phoneNumber) {
     if (
-      typeof username === "string" &&
-      typeof password === "string" &&
-      typeof phoneNumber === "string"
+      typeof username === 'string'
+      && typeof password === 'string'
+      && typeof phoneNumber === 'string'
     ) {
       if (
-        phoneNumber.length === 10 &&
-        password.length >= 6 &&
-        username.length >= 3
+        phoneNumber.length === 10
+        && password.length >= 6
+        && username.length >= 3
       ) {
         database.findOneIn(
-          "users",
-          { username: username },
+          'users',
+          { username },
           (checkErr, result) => {
             if (checkErr) {
               res.json({
                 success: false,
-                result: "Please try again later! db"
+                result: 'Please try again later! db',
               });
               console.log(checkErr);
               return;
@@ -35,7 +35,7 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
                     success: false,
                     result: "Please try again later!"
                   });
-                  return;
+                  
                 } else {
                   database.insertOneInto(
                     "users",
@@ -68,8 +68,8 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
                   );
                 }
               });
-            } else res.json({ success: false, result: "User already exists!" });
-          }
+            } else res.json({ success: false, result: 'User already exists!' });
+          },
         );
       }
     }
@@ -77,41 +77,41 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
 };
 
 exports.signin = ({ username, password }, res) => {
-  database.findOneIn("users", { username }, (findErr, result) => {
+  database.findOneIn('users', { username }, (findErr, result) => {
     if (findErr) {
       res.json({
         success: false,
-        result: "Please try again later!"
+        result: 'Please try again later!',
       });
     } else if (result === undefined || result === null) {
       res.json({
         success: false,
-        result: "Username doesn't exist!"
+        result: "Username doesn't exist!",
       });
     } else {
       utils.compare(password, result.password, (utError, success) => {
         if (utError) {
           res.json({
             success: false,
-            result: "Please try again later!"
+            result: 'Please try again later!',
           });
         } else if (!success) {
           res.json({
             success: false,
-            result: "Username/password is invalid!"
+            result: 'Username/password is invalid!',
           });
         } else {
           const userDetails = {
-            u$u: username
+            u$u: username,
           };
           const cookie = sign(userDetails, SECRET);
 
-          res.cookie("udetails", cookie, {
-            httpOnly: true
+          res.cookie('udetails', cookie, {
+            httpOnly: true,
           });
           res.json({
             success: true,
-            result: "Logged in successfully!"
+            result: 'Logged in successfully!',
           });
         }
       });
@@ -134,7 +134,7 @@ exports.checkCookies = (req, res) => {
 
         const { u$u } = userCookie;
 
-        database.findOneIn("users", { username: u$u }, (err, success) => {
+        database.findOneIn('users', { username: u$u }, (err, success) => {
           if (err || !success) res.json({ authenticated: false });
           else res.json({ authenticated: true });
         });
@@ -145,7 +145,7 @@ exports.checkCookies = (req, res) => {
 
 exports.logout = (req, res) => {
   if (req.headers.cookie) {
-    res.clearCookie("udetails");
+    res.clearCookie('udetails');
     res.json({ success: true });
   }
 };
