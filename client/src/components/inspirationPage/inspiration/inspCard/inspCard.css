@@ -11,9 +11,10 @@
   height: 350px;
   width: 90%;
   /* opacity: 0; */
-  margin: -70px auto;
+  margin: -70px auto 5px;
   animation-name: anim;
   animation-duration:1.5s;
+
 }
 @keyframes fade {
   from {opacity:0;}
