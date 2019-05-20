@@ -75,7 +75,7 @@ render(){
               <p><img src="https://img.icons8.com/ios/50/000000/hospital-3.png"> {this.state.userProfile.config.recentSurgey}</p>
               <p><img src="https://img.icons8.com/ios/50/000000/alarm.png"> {this.state.userProfile.config.getNotification}</p>
               <div className='Edit'>
-                <button>Edit</button>
+                <button><img src="https://img.icons8.com/pastel-glyph/64/000000/edit.png"> Edit</button>
               </div>
             </div>
           </div>
