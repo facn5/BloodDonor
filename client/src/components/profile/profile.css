@@ -6,7 +6,7 @@
 }
 .container-profile{
   display:grid;
-  grid-template-rows: 2fr 7fr 1fr;
+  grid-template-rows: 2fr 5fr;
   grid-row-gap: 2%;
 }
 .section{
