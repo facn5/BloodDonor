@@ -1,15 +1,19 @@
 import React from "react";
 import "./header.css";
 import "../../containers/style";
+import { findByTestId } from "react-testing-library";
+import { runInThisContext } from "vm";
 
 export class Header extends React.Component {
   state = {
     slideClass: "nav-links",
     animate: "",
-    mbNavBarClass: "mobile-navBar"
+    mbNavBarClass: "mobile-navBar",
+    authenticated: ""
   };
 
   ToggleSlide = () => {
+    this.checkAuth();
     if (this.state.slideClass === "nav-links")
       this.setState({ slideClass: "nav-links nav-active" });
     else this.setState({ slideClass: "nav-links" });
@@ -23,15 +27,28 @@ export class Header extends React.Component {
     else this.setState({ mbNavBarClass: "mobile-navBar" });
   };
 
+  componentDidMount = () => {
+    this.checkAuth();
+  };
+
   exitNavbar = () => {
     this.setState({
       slideClass: "nav-links",
-      mbNavBarClass: "mobile-navBar"
+      mbNavBarClass: "mobile-navBar",
+      animate: ""
     });
   };
 
   onLogin = () => {
-    this.props.history.push("/login");
+    const { authenticated } = this.state;
+    if (authenticated === "Login") this.props.history.push("/login");
+    else
+      fetch("/signout", { method: "POST", credentials: "same-origin" })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) this.setState({ authenticated: "Login" });
+        });
+
     this.exitNavbar();
   };
 
@@ -61,7 +78,7 @@ export class Header extends React.Component {
           </div>
           <ul className={this.state.slideClass}>
             <li style={{ animation: `${this.state.animate} 0.4s` }}>
-              <a onClick={this.onLogin}>Login</a>
+              <a onClick={this.onLogin}>{this.state.authenticated}</a>
             </li>
             <li style={{ animation: `${this.state.animate} 0.6s` }}>
               <a onClick={this.onInspiration}>Inspiration</a>
