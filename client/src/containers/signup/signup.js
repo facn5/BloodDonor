@@ -142,7 +142,7 @@ class Signup extends Component {
     else if (username.length < 3)
       this.setState(prevState => ({
         success: 'red',
-        dbResult: 'username must be more than 3 chars',
+        dbResult: 'username must be more than 3 characters',
         borders: {
           ...prevState.borders,
           username: 'red'
@@ -151,7 +151,7 @@ class Signup extends Component {
     else if (password.length < 6)
       this.setState(prevState => ({
         success: 'red',
-        dbResult: 'Password must be more than 6 chars',
+        dbResult: 'Password must be more than 6 characters',
         borders: {
           ...prevState.borders,
           password: 'red'
@@ -160,7 +160,7 @@ class Signup extends Component {
     else if (!/\d/.test(password) || /^\d+$/.test(password))
       this.setState(prevState => ({
         success: 'red',
-        dbResult: 'Password must have both chars and numbers',
+        dbResult: 'Password must have both characters and numbers',
         borders: {
           ...prevState.borders,
           password: 'red'
