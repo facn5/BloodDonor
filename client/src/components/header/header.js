@@ -1,41 +1,54 @@
-import React from 'react';
-import './header.css';
-import '../../containers/style'
+import React from "react";
+import "./header.css";
+import "../../containers/style";
 
 export class Header extends React.Component {
   state = {
-    slideClass: 'nav-links',
-    animate: '',
-    mbNavBarClass: 'mobile-navBar',
+    slideClass: "nav-links",
+    animate: "",
+    mbNavBarClass: "mobile-navBar"
   };
 
   ToggleSlide = () => {
-    if (this.state.slideClass === 'nav-links')
-      this.setState({ slideClass: 'nav-links nav-active' });
-    else this.setState({ slideClass: 'nav-links' });
+    if (this.state.slideClass === "nav-links")
+      this.setState({ slideClass: "nav-links nav-active" });
+    else this.setState({ slideClass: "nav-links" });
 
-    if (this.state.animate === '') this.setState({ animate: 'navLinkFade 0.5s ease forwards' });
-    else this.setState({ animate: '' });
+    if (this.state.animate === "")
+      this.setState({ animate: "navLinkFade 0.5s ease forwards" });
+    else this.setState({ animate: "" });
 
-    if (this.state.mbNavBarClass === 'mobile-navBar') this.setState({ mbNavBarClass: 'mobile-navBar toggle' });
-    else this.setState({ mbNavBarClass: 'mobile-navBar' });
+    if (this.state.mbNavBarClass === "mobile-navBar")
+      this.setState({ mbNavBarClass: "mobile-navBar toggle" });
+    else this.setState({ mbNavBarClass: "mobile-navBar" });
+  };
+
+  exitNavbar = () => {
+    this.setState({
+      slideClass: "nav-links",
+      mbNavBarClass: "mobile-navBar"
+    });
   };
 
   onLogin = () => {
-    this.props.history.push('/login');
-  }
+    this.props.history.push("/login");
+    this.exitNavbar();
+  };
 
   onInspiration = () => {
-    this.props.history.push('/inspiration');
-  }
+    this.props.history.push("/inspiration");
+    this.exitNavbar();
+  };
 
   onDonate = () => {
-    this.props.history.push('/');
-  }
+    this.props.history.push("/");
+    this.exitNavbar();
+  };
 
   onAbout = () => {
-    this.props.history.push('/about');
-  }
+    this.props.history.push("/about");
+    this.exitNavbar();
+  };
 
   render() {
     return (
