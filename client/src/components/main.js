@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-
+import Spinner from "react-spinner-material";
 import Card from "./card/card.js";
 
 class Main extends Component {
