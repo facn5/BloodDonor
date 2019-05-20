@@ -1,0 +1,10 @@
+.questionCard {
+  display: block;
+  justify-content: space-between;
+  background-color: #f77;
+  border-radius: 10px;
+  font-family: "ubuntu";
+  font-size: 18px;
+  margin: 15px;
+  padding: 10px;
+}
