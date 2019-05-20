@@ -20,9 +20,11 @@
     "parcel-bundler": "^1.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-on-screen": "^2.1.1",
     "react-router-dom": "^5.0.0",
     "react-share": "^3.0.0",
-    "react-testing-library": "^7.0.0"
+    "react-testing-library": "^7.0.0",
+    "scroll-into-view-if-needed": "^2.2.20"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
