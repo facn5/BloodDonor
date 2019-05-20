@@ -1,8 +1,6 @@
 import React from "react";
 import "./header.css";
 import "../../containers/style";
-import { findByTestId } from "react-testing-library";
-import { runInThisContext } from "vm";
 
 export class Header extends React.Component {
   state = {
