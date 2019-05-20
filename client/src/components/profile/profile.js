@@ -1,6 +1,7 @@
 import React from 'react';
 import './profile.css';
 import Spinner from "react-spinner-material";
+import cookie from 'react-cookies';
 
 export class Profile extends React.Component {
 state = {
