@@ -15,7 +15,7 @@ router.get('/checkauth', (req, res) => {
 
 router.get('/getInsp', insp.get);
 
-router.get('/profile', userinfo.get);
+router.get('/getProfile:username', userinfo.get);
 
 router.get('*', (req, res) => {
   res.sendFile(
