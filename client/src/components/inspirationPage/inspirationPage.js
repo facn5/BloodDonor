@@ -7,20 +7,14 @@ export class InspirationPage extends React.Component {
     cards:[]
   }
     componentDidMount() {
-      fetch('/getInsp').then(res => res.json()).then(data=>{this.setState({cards:data});
-    console.log(this.state.cards);})
+      fetch('/getInsp').then(res => res.json()).then(data=>{this.setState({cards:data})})
     }
     render() {
-
       const {cards}=this.state;
-      console.log(cards.data);
-
       if(cards.length === 0) return (<h1>Loading...</h1>)
 
       return(
         <>
-
-
           {cards.data.slice(0,10).map(card =>(
           <Inspiration title={card.title} desc={card.description} imgSrc={card.picture}/>
         )
