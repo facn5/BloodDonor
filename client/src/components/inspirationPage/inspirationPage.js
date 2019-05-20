@@ -1,6 +1,7 @@
 import React from 'react';
 import './inspirationPage.css';
 import { Inspiration } from './inspiration/inspiration.js';
+import Spinner from 'react-spinner-material';
 
 export class InspirationPage extends React.Component {
     state = {
@@ -11,7 +12,8 @@ export class InspirationPage extends React.Component {
     }
     render() {
       const {cards}=this.state;
-      if(cards.length === 0) return (<h1>Loading...</h1>)
+      if(cards.length === 0) return (<Spinner className="spinner" size={60} spinnerColor={"#333"} spinnerWidth={2} visible={true} />
+)
 
       return(
         <>
