@@ -70,7 +70,7 @@ render(){
               <p><img src="https://img.icons8.com/ios/50/000000/email.png"/> {this.state.userProfile.email}</p>
               <p><img src="https://img.icons8.com/ios/50/000000/phone.png"> {this.state.userProfile.phoneNumber}</p>
               <p><img src="https://img.icons8.com/pastel-glyph/64/000000/--bloodbag.png"> {this.state.userProfile.config.bloodType}</p>
-              <p>{this.state.userProfile.config.validAge}</p>
+              <p><img src="https://img.icons8.com/ios/50/000000/18-plus.png"> {this.state.userProfile.config.validAge}</p>
               <p>{this.state.userProfile.config.healthStatus}</p>
               <p>{this.state.userProfile.config.recentSurgey}</p>
               <p>{this.state.userProfile.config.getNotification}</p>
