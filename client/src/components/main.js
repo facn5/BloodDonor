@@ -29,7 +29,7 @@ class Main extends Component {
     this.state.cards.map(card => {
       if (card._id === id) {
         card.active = !card.active;
-      } else c.active = false;
+      } else card.active = false;
     });
     this.setState({ state: this.state });
   };
@@ -71,11 +71,12 @@ class Main extends Component {
               card.card.location.toLowerCase().includes(search.toLowerCase()) ||
               card.card.bloodType.toLowerCase().includes(search.toLowerCase())
             )
-              return c.card;
+              return card.card;
           })
           .slice(0, 10)
-          .map(card => (
+          .map((card, index) => (
             <Card
+              index={`card${index}`}
               id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}

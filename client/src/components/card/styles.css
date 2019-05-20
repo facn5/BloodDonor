@@ -2,6 +2,7 @@
   display: grid;
   grid-template-rows: 9rem 26rem;
   margin-top: 5px;
+  /* margin-top: 15vh; */
 }
 .hideAll {
   display: grid;
@@ -34,7 +35,7 @@
   height: 2rem;
 }
 
-button {
+a {
   padding: 1.2rem !important;
   background: transparent;
   border: none !important;

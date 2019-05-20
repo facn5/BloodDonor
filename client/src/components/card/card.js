@@ -6,7 +6,6 @@ import {
   FacebookIcon,
   FacebookShareCount
 } from "react-share";
-import scrollIntoView from "scroll-into-view-if-needed";
 import TrackVisibility from "react-on-screen";
 export default class Card extends React.Component {
   constructor(props) {
@@ -14,11 +13,11 @@ export default class Card extends React.Component {
     this.state = {
       data: {}
     };
-    this.ref = React.createRef();
   }
 
   render() {
     const {
+      index,
       stationName,
       bloodType,
       location,
@@ -30,7 +29,7 @@ export default class Card extends React.Component {
       active
     } = this.props;
     return (
-      <div className={active ? "showMore" : "hideAll"}>
+      <div id={index} className={active ? "showMore" : "hideAll"}>
         <div className="cardDetails">
           <div className="subContainer">
             <p>{stationName},</p>
@@ -54,7 +53,8 @@ export default class Card extends React.Component {
             />
           </div>
           <div className="subContainer">
-            <button
+            <a
+              href={"#" + index}
               onClick={() => {
                 this.props.triggerDisplay(this.props.id);
               }}
@@ -63,13 +63,12 @@ export default class Card extends React.Component {
                 className="imgDim"
                 src="https://img.icons8.com/ios/64/000000/place-marker.png"
               />
-            </button>
+            </a>
           </div>
         </div>
         <div className={active ? "show" : "hide"}>
           <TrackVisibility>
             <Map
-              ref={this.ref}
               stationName={stationName}
               street={street}
               contact={contact}

@@ -10,8 +10,7 @@ export const Map = ({
   isVisible
 }) => (
   <>
-    {console.log(isVisible)}
-    <div className={isVisible ? "container-map" : "container-map-adjust"}>
+    <div className={"container-map"}>
       <iframe className="map" src={mapSrc} />
       <div className="detailsBg" />
       <div className="details ">
