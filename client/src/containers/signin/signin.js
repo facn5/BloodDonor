@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import "./signin.css";
+import React, { Component } from 'react';
+import './signin.css';
 
 class Signin extends Component {
   state = {
-    username: "",
-    password: "",
-    dbResult: "",
-    success: ""
+    username: '',
+    password: '',
+    dbResult: '',
+    success: ''
   };
   handleChange = event => {
-    if (event.target.name === "username")
+    if (event.target.name === 'username')
       this.setState({ username: event.target.value });
-    else if (event.target.name === "password")
+    else if (event.target.name === 'password')
       this.setState({ password: event.target.value });
   };
   handleSubmit = () => {
-    fetch("/signin", {
-      method: "POST",
+    fetch('/signin', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         username: this.state.username,
@@ -30,8 +30,8 @@ class Signin extends Component {
         this.setState({ dbResult: data.result });
 
         if (data.success) {
-          this.setState({ success: "green" });
-        } else this.setState({ success: "red" });
+          this.setState({ success: 'green' });
+        } else this.setState({ success: 'red' });
       })
       .catch(err => console.log(err));
   };
@@ -62,7 +62,7 @@ class Signin extends Component {
         <p style={{ color: this.state.success }}>{this.state.dbResult}</p>
         <h3
           className='center'
-          onClick={() => this.props.history.push("/signup")}
+          onClick={() => this.props.history.push('/signup')}
         >
           Sign up
         </h3>
