@@ -7,12 +7,11 @@ export class Profile extends React.Component {
 state = {
   mode: 'view',
   userProfile: null,
-  username : JSON.parse(window.atob(cookie.load('udetails').split('.')[1])).u$u,
   searchStatus: 'idle'
 }
 
 componentDidMount(){
-  fetch(`/getProfile/${this.state.username}`)
+  fetch(`/getProfile/${JSON.parse(window.atob(cookie.load('udetails').split('.')[1])).u$u}`)
   .then(res => {
     this.setState({searchStatus:'searching'});
      return res.json();
@@ -47,6 +46,7 @@ componentDidUpdate(){
   }
 }
 render(){
+  console.log(this.state.userProfile);
    switch(this.state.searchStatus) {
      case 'idle':
       return (this.displaySearchStatus('Preparing process...'));
@@ -64,8 +64,17 @@ render(){
       return (
         <>
           <div className='container-profile'>
-            <div className='avatar'>avatar</div>
-            <div className='userDetails'>details</div>
+            <div className='avatar'><img src=''></img></div>
+            <div className='userDetails'>
+              <p className='username'>{this.state.userProfile.username}</p>
+              <p>{this.state.userProfile.email}</p>
+              <p>{this.state.userProfile.phoneNumber}</p>
+              <p>{this.state.userProfile.config.bloodType}</p>
+              <p>{this.state.userProfile.config.validAge}</p>
+              <p>{this.state.userProfile.config.healthStatus}</p>
+              <p>{this.state.userProfile.config.recentSurgey}</p>
+              <p>{this.state.userProfile.config.getNotification}</p>
+            </div>
             <div className='Edit'>edit</div>
           </div>
         </>
