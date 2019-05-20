@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
+
 import Card from "./card/card.js";
 
 class Main extends Component {
@@ -74,9 +75,8 @@ class Main extends Component {
               return card.card;
           })
           .slice(0, 10)
-          .map((card, index) => (
+          .map(card => (
             <Card
-              index={`card${index}`}
               id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}
