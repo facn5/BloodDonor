@@ -37,31 +37,31 @@ class Signin extends Component {
   };
   render() {
     return (
-      <div className="signInContainer">
-        <h1 className="center">Sign in</h1>
+      <div className='signInContainer'>
+        <h1 className='center'>Sign in</h1>
 
         <input
           value={this.state.username}
           onChange={this.handleChange}
-          name="username"
-          type="text"
-          placeholder="username"
+          name='username'
+          type='text'
+          placeholder='username'
         />
         <input
-          autoComplete="off"
+          autoComplete='off'
           value={this.state.password}
           onChange={this.handleChange}
-          name="password"
-          type="password"
-          placeholder="password"
+          name='password'
+          type='password'
+          placeholder='password'
         />
 
-        <button onClick={this.handleSubmit} className="center" type="submit">
+        <button onClick={this.handleSubmit} className='center' type='submit'>
           Sign in!
         </button>
         <p style={{ color: this.state.success }}>{this.state.dbResult}</p>
         <h3
-          className="center"
+          className='center'
           onClick={() => this.props.history.push("/signup")}
         >
           Sign up
