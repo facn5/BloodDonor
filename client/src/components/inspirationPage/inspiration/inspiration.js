@@ -22,7 +22,7 @@ export class Inspiration extends React.Component {
           <div>
             <p className="title">{title}</p>
             <p className="shortDescription">{desc}</p>
-            <button className='readmore' onClick={()=>{this.setState({opened:!this.state.opened})}}>Read more...</button>
+            <button className='readmore' onClick={()=>{this.setState({opened:!this.state.opened})}}>{this.state.opened?'Close':'Read more...'}</button>
             </div>
           </div>
          <div>

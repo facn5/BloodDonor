@@ -9,7 +9,7 @@ export class Header extends React.Component {
     mbNavBarClass: 'mobile-navBar',
     authenticated: ''
   };
-§
+
   ToggleSlide = () => {
     this.checkAuth();
     if (this.state.slideClass === 'nav-links')
@@ -36,12 +36,12 @@ export class Header extends React.Component {
         if (data.authenticated) {
         if( this.state.authenticated !== 'Log out')
           this.setState({ authenticated: 'Log out' });
-          
+
         else {
           if (this.state.authenticated !== 'Login')
             this.setState({ authenticated: 'Login' });
         }
-      });
+      }});
   };
 
   exitNavbar = () => {
