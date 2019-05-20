@@ -1,0 +1,62 @@
+.container-inspCard{
+  display: grid;
+  grid-template-rows: 9rem auto;
+  margin-top:10px;
+}
+.container-card{
+  display:grid;
+  grid-template-columns: 40% 60%;
+  background-color: #f77;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  height: 130px;
+  z-index: 1;
+  padding-top: 20px;
+  max-width: 95%;
+}
+@keyframes animopen {
+  from {border-bottom-right-radius:0%;
+    border-bottom-left-radius:0%;
+  }
+ to {border-bottom-right-radius:50%;
+ border-bottom-left-radius:50%;
+}
+}
+
+.container-card--opened{
+  animation-name: animopen;
+  animation-duration:2.5s;
+  border-bottom-right-radius:50%;
+   border-bottom-left-radius:50%;
+}
+
+.readmore{
+  color: #1600a8;
+}
+.shortDescription{
+  overflow: hidden;
+  font-size: 1rem;
+  max-width: 29ch;
+  margin-right:8px;
+  max-height: 2.4em;
+  margin-top: 0px;
+}
+.title{
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 18ch;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+.img{
+  display: flex;
+  align-items: center;
+  margin: -5px auto;
+  width: 80px;
+  height: 80px;
+}
+.hideall{
+  display: none;
+}
