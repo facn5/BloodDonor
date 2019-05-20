@@ -44,3 +44,10 @@
 .username{
   font-size: 38px !important;
 }
+.edit img{
+   width: 25px;
+   height: 25px;
+}
+.edit{
+  font-size: 20px;
+}
