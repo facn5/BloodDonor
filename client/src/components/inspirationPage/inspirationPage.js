@@ -4,17 +4,29 @@ import { Inspiration } from './inspiration/inspiration.js';
 
 export class InspirationPage extends React.Component {
     state = {
-    cards:[{title:'first title',imgSrc:'./noimage.png',desc:'first desc'},{title:'second title',imgSrc:'../noimage.png',desc:'second desc'},{title:'third title',imgSrc:'../noimage.png',desc:'third desc'}]
+    cards:[]
   }
+    componentDidMount() {
+      fetch('/getInsp').then(res => res.json()).then(data=>{this.setState({cards:data});
+    console.log(this.state.cards);})
+    }
     render() {
 
       const {cards}=this.state;
+      console.log(cards.data);
+
+      if(cards.length === 0) return (<h1>Loading...</h1>)
+
       return(
         <>
-        <Inspiration title={cards[0].title} imgSrc={cards[0].imgSrc} desc={cards[0].desc} />
-        <Inspiration title={cards[1].title} imgSrc={cards[1].imgSrc} desc={cards[1].desc} />
-        <Inspiration title={cards[2].title} imgSrc={cards[2].imgSrc} desc={cards[2].desc} />
-        </>
+
+
+          {cards.data.slice(0,10).map(card =>(
+          <Inspiration title={card.title} desc={card.description} imgSrc={card.picture}/>
+        )
+      )}
+
+      </>
       );
     }
 
