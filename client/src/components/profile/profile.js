@@ -11,7 +11,8 @@ state = {
 }
 
 componentDidMount(){
-  fetch('/getProfile')
+console.log(document.cookie.udetails);
+  fetch(`/getProfile/${this.state.username}`)
   .then(res => {
     this.setState({searchStatus:'searching'});
      return res.json();
