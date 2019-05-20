@@ -1,11 +1,7 @@
 import React from "react";
 import "./styles";
 import { Map } from "./map/map.js";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  FacebookShareCount
-} from "react-share";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 export default class Card extends React.Component {
   constructor(props) {
