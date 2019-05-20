@@ -67,8 +67,8 @@ render(){
             <div className='avatar section'><img src='http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'></img></div>
             <div className='userDetails section'>
               <p className='username'>{this.state.userProfile.username}</p>
-              <p><img src="https://img.icons8.com/ios/50/000000/email.png"/>{this.state.userProfile.email}</p>
-              <p>{this.state.userProfile.phoneNumber}</p>
+              <p><img src="https://img.icons8.com/ios/50/000000/email.png"/> {this.state.userProfile.email}</p>
+              <p><img src="https://img.icons8.com/ios/50/000000/phone.png"> {this.state.userProfile.phoneNumber}</p>
               <p>{this.state.userProfile.config.bloodType}</p>
               <p>{this.state.userProfile.config.validAge}</p>
               <p>{this.state.userProfile.config.healthStatus}</p>
