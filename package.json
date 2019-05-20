@@ -35,6 +35,7 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-spinner-material": "^1.1.1",
     "react-testing-library": "^7.0.0",
     "serve-favicon": "^2.5.0"
   },

@@ -16,15 +16,29 @@ class Main extends Component {
 
   componentDidMount() {
     fetch(this.url)
-      .then(d => d.json())
+      .then(res => res.json())
       .then(d => {
-        this.setState({ cards: d });
+        this.setState({
+          cards: d.data.map(card => {
+            return { ...card, active: false };
+          })
+        });
       });
   }
+
+  updateDisplay = id => {
+    this.state.cards.map(card => {
+      if (card._id === id) {
+        card.active = !card.active;
+      } else card.active = false;
+    });
+    this.setState({ state: this.state });
+  };
 
   handleSearch(e) {
     this.setState({ search: e.target.value });
   }
+
   render() {
     const { cards, search } = this.state;
     if (cards.length === 0)
@@ -49,18 +63,21 @@ class Main extends Component {
         />
         <hr />
 
-        {cards.data
-          .filter(c => {
+        {cards
+          .filter(card => {
             if (
-              c.card.stationName.toLowerCase().includes(search.toLowerCase()) ||
-              c.card.location.toLowerCase().includes(search.toLowerCase()) ||
-              c.card.bloodType.toLowerCase().includes(search.toLowerCase())
+              card.card.stationName
+                .toLowerCase()
+                .includes(search.toLowerCase()) ||
+              card.card.location.toLowerCase().includes(search.toLowerCase()) ||
+              card.card.bloodType.toLowerCase().includes(search.toLowerCase())
             )
-              return c.card;
+              return card.card;
           })
           .slice(0, 10)
           .map(card => (
             <Card
+              id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}
               bloodType={card.card.bloodType}
@@ -69,6 +86,8 @@ class Main extends Component {
               contact={card.card.contact}
               openHours={card.card.openHours}
               mapSrc={card.card.mapSrc}
+              active={card.active}
+              triggerDisplay={this.updateDisplay}
             />
           ))}
       </>
