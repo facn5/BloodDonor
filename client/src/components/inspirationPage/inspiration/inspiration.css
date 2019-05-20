@@ -43,15 +43,17 @@
   margin-top: 0px;
 }
 .title{
+  font-weight: bold;
   white-space: nowrap;
-   overflow: hidden;
+  overflow: hidden;
   max-width: 18ch;
+  font-size: 1.2rem;
+  text-decoration: underline;
 }
 .img{
-  /* margin-left: 20px; */
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  margin: -5px auto;
   width: 80px;
   height: 80px;
 }
