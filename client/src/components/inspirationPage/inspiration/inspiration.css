@@ -11,10 +11,10 @@
   font-size: 1.2rem;
   margin: 0 auto;
   height: 130px;
-  width: 90%;
+  /* width: 90%; */
   z-index: 1;
   padding-top: 20px;
-
+  max-width: 95%;
 }
 @keyframes animopen {
   from {border-bottom-right-radius:0%;
@@ -32,11 +32,17 @@
    border-bottom-left-radius:50%;
 }
 
-
+.readmore{
+  color: #1600a8
+}
 .shortDescription{
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
-  max-width: 42ch;
+  font-size: 1rem;
+  max-width: 29ch;
+  margin-right:8px;
+  max-height: 3.2em;
+  margin-top: 0px;
 }
 .img{
   display: flex;
