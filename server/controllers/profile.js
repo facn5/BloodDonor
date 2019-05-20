@@ -1,7 +1,7 @@
 const query = require('../database/mongodb.js');
 
 exports.get = (req, res) => {
-  query.findOneIn('users', { username: req.params.username }, (err, results) => {
+  query.findOneIn('users', { username: 'Admin' }, (err, results) => {
     res.json({ data: results });
   });
 };
