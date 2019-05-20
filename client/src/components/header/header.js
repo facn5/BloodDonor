@@ -34,9 +34,10 @@ export class Header extends React.Component {
       .then(res => res.json())
       .then(data => {
         if (data.authenticated) {
-          if (this.state.authenticated !== "Log out")
-            this.setState({ authenticated: "Log out" });
-        } else {
+        if( this.state.authenticated !== 'Log out')
+          this.setState({ authenticated: "Log out" });
+          
+        else {
           if (this.state.authenticated !== "Login")
             this.setState({ authenticated: "Login" });
         }
