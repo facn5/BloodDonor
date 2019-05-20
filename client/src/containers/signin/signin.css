@@ -15,6 +15,8 @@ button {
   padding: 13px;
   margin: 10px;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
@@ -22,7 +24,7 @@ input {
 }
 
 button {
-  margin: 30px auto;
+  margin: 20px auto;
   border: solid 1px black;
   font-size: 16px;
   background-color: #f77;
