@@ -1,18 +1,17 @@
 import React from 'react';
 import './profile.css';
 import Spinner from "react-spinner-material";
-import cookie from 'react-cookies';
+import cookie from 'react-cookie';
 
 export class Profile extends React.Component {
 state = {
   mode: 'view',
   userProfile: null,
-  username : 'Admin',
+  username : JSON.parse(window.atob(cookie.load('udetails').split('.')[1])).u$u,
   searchStatus: 'idle'
 }
 
 componentDidMount(){
-console.log(document.cookie.udetails);
   fetch(`/getProfile/${this.state.username}`)
   .then(res => {
     this.setState({searchStatus:'searching'});
@@ -40,6 +39,7 @@ displaySearchStatus = (status) => (
   </>
 );
 componentDidUpdate(){
+
   if(this.state.searchStatus === 'notfound'){
     this.setState({searchStatus:'displayNotFound'});
   } else if(this.state.searchStatus === 'found') {
@@ -64,9 +64,9 @@ render(){
       return (
         <>
           <div className='container-profile'>
-            <div className='avatar'></div>
-            <div className='userDetails'></div>
-            <div className='Edit'></div>
+            <div className='avatar'>avatar</div>
+            <div className='userDetails'>details</div>
+            <div className='Edit'>edit</div>
           </div>
         </>
       );
