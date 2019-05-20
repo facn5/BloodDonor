@@ -5,7 +5,7 @@ export const InspCardDetails = ({ description,isVisible }) => (
   <>
     <div className={isVisible?'container-inspCardDetails':'container-inspCardDetails hide'}>
       <div>
-        <p className="description">desc hidessssssssssssssssssssssssssssssss sda sda wawd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd awd ad :{description}</p>
+        <p className="description">{description}</p>
       </div>
     </div>
   </>
