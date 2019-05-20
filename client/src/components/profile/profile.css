@@ -1,0 +1,14 @@
+.searchStatus{
+  display: flex;
+  margin:50% auto;
+  justify-content: center;
+  align-self: center;
+}
+.container-profile{
+  display:grid;
+  grid-template-rows: 1fr 7fr;
+  grid-row-gap: 2%;
+}
+.section{
+  background-color: #ffc4c4;
+}
