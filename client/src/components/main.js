@@ -50,7 +50,13 @@ class Main extends Component {
             onChange={this.handleSearch.bind(this)}
             placeholder="Type here"
           />
-          <p>Loading..</p>
+          <Spinner
+            className="spinner"
+            size={60}
+            spinnerColor={"#333"}
+            spinnerWidth={2}
+            visible={true}
+          />
         </div>
       );
     return (
