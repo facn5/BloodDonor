@@ -64,10 +64,10 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
   }
 };
 
-exports.signin = (body, res) => {
+exports.signin = ({username, password}, res) => {
   database.findOneIn(
     'users',
-    { username: body.username },
+    { username },
     (findErr, result) => {
       if (findErr) {
         res.json({
@@ -80,7 +80,7 @@ exports.signin = (body, res) => {
           result: "Username doesn't exist!"
         });
       } else {
-        utils.compare(body.password, result.password, (utError, success) => {
+        utils.compare(password, result.password, (utError, success) => {
           if (utError) {
             res.json({
               success: false,
@@ -93,7 +93,7 @@ exports.signin = (body, res) => {
             });
           } else {
             const userDetails = {
-              u$u: body.user
+              u$u: username
             };
             const cookie = sign(userDetails, SECRET);
 
@@ -136,3 +136,4 @@ exports.checkCookies = (req, res) => {
     }
   }
 };
+}
