@@ -1,12 +1,8 @@
 import React from "react";
 import "./styles";
 import { Map } from "./map/map.js";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  FacebookShareCount
-} from "react-share";
-import TrackVisibility from "react-on-screen";
+import { FacebookShareButton, FacebookIcon } from "react-share";
+
 export default class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +13,6 @@ export default class Card extends React.Component {
 
   render() {
     const {
-      index,
       stationName,
       bloodType,
       location,
@@ -29,7 +24,7 @@ export default class Card extends React.Component {
       active
     } = this.props;
     return (
-      <div id={index} className={active ? "showMore" : "hideAll"}>
+      <div className={active ? "showMore" : "hideAll"}>
         <div className="cardDetails">
           <div className="subContainer">
             <p>{stationName},</p>
@@ -53,8 +48,7 @@ export default class Card extends React.Component {
             />
           </div>
           <div className="subContainer">
-            <a
-              href={"#" + index}
+            <button
               onClick={() => {
                 this.props.triggerDisplay(this.props.id);
               }}
@@ -63,19 +57,17 @@ export default class Card extends React.Component {
                 className="imgDim"
                 src="https://img.icons8.com/ios/64/000000/place-marker.png"
               />
-            </a>
+            </button>
           </div>
         </div>
         <div className={active ? "show" : "hide"}>
-          <TrackVisibility>
-            <Map
-              stationName={stationName}
-              street={street}
-              contact={contact}
-              openHours={openHours}
-              mapSrc={mapSrc}
-            />
-          </TrackVisibility>
+          <Map
+            stationName={stationName}
+            street={street}
+            contact={contact}
+            openHours={openHours}
+            mapSrc={mapSrc}
+          />
         </div>
       </div>
     );
