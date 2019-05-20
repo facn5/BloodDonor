@@ -81,7 +81,7 @@ exports.signin = ({ username, password }, res) => {
     } else if (result === undefined || result === null) {
       res.json({
         success: false,
-        result: 'Username doesn\'t exist!',
+        result: "Username doesn't exist!",
       });
     } else {
       utils.compare(password, result.password, (utError, success) => {
@@ -126,13 +126,14 @@ exports.checkCookies = (req, res) => {
     if (jwt) {
       verify(jwt.udetails, SECRET, (err, userCookie) => {
         if (err) res.json({ authenticated: false });
+        else {
+          const { u$u } = userCookie;
 
-        const { u$u } = userCookie;
-
-        database.findOneIn('users', { username: u$u }, (err, success) => {
-          if (err || !success) res.json({ authenticated: false });
-          else res.json({ authenticated: true });
-        });
+          database.findOneIn('users', { username: u$u }, (err, success) => {
+            if (err || !success) res.json({ authenticated: false });
+            else res.json({ authenticated: true });
+          });
+        }
       });
     }
   }
