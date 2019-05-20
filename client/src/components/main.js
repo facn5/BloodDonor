@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-
+import Spinner from "react-spinner-material";
 import Card from "./card/card.js";
 
 class Main extends Component {
@@ -50,7 +50,13 @@ class Main extends Component {
             onChange={this.handleSearch.bind(this)}
             placeholder="Type here"
           />
-          <p>Loading..</p>
+          <Spinner
+            className="spinner"
+            size={60}
+            spinnerColor={"#333"}
+            spinnerWidth={2}
+            visible={true}
+          />
         </div>
       );
     return (
@@ -75,8 +81,9 @@ class Main extends Component {
               return card.card;
           })
           .slice(0, 10)
-          .map(card => (
+          .map((card, index) => (
             <Card
+              index={"card" + index}
               id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}
