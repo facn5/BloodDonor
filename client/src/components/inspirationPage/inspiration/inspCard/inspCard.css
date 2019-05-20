@@ -1,16 +1,14 @@
 
 @keyframes anim {
   from {height:0px;}
- to {height: 350px;}
+   to {height: 350px;}
 }
 .container-inspCardDetails{
   display: grid;
   grid-template-rows: 10% 85%;
   grid-row-gap: 3%;
   background-color: #e5a9a9;
-  height: 350px;
   width: 90%;
-  /* opacity: 0; */
   margin: -70px auto 5px;
   animation-name: anim;
   animation-duration:1.5s;
@@ -24,8 +22,8 @@
   animation-name: fade;
   animation-duration:2s;
   margin-top: 70px;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .hide{
   display: none;
