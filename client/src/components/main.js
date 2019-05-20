@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./styles.css";
-
 import Card from "./card/card.js";
 
 class Main extends Component {
@@ -12,7 +11,6 @@ class Main extends Component {
       str: ""
     };
     this.url = "/getCards";
-    // this.updateDisplay = this.updateDisplay.bind(this);
   }
 
   componentDidMount() {
@@ -28,9 +26,9 @@ class Main extends Component {
   }
 
   updateDisplay = id => {
-    this.state.cards.map(c => {
-      if (c._id === id) {
-        c.active = !c.active;
+    this.state.cards.map(card => {
+      if (card._id === id) {
+        card.active = !card.active;
       } else c.active = false;
     });
     this.setState({ state: this.state });
@@ -65,11 +63,13 @@ class Main extends Component {
         <hr />
 
         {cards
-          .filter(c => {
+          .filter(card => {
             if (
-              c.card.stationName.toLowerCase().includes(search.toLowerCase()) ||
-              c.card.location.toLowerCase().includes(search.toLowerCase()) ||
-              c.card.bloodType.toLowerCase().includes(search.toLowerCase())
+              card.card.stationName
+                .toLowerCase()
+                .includes(search.toLowerCase()) ||
+              card.card.location.toLowerCase().includes(search.toLowerCase()) ||
+              card.card.bloodType.toLowerCase().includes(search.toLowerCase())
             )
               return c.card;
           })

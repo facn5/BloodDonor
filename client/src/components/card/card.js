@@ -6,13 +6,15 @@ import {
   FacebookIcon,
   FacebookShareCount
 } from "react-share";
-
+import scrollIntoView from "scroll-into-view-if-needed";
+import TrackVisibility from "react-on-screen";
 export default class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: {}
     };
+    this.ref = React.createRef();
   }
 
   render() {
@@ -65,13 +67,16 @@ export default class Card extends React.Component {
           </div>
         </div>
         <div className={active ? "show" : "hide"}>
-          <Map
-            stationName={stationName}
-            street={street}
-            contact={contact}
-            openHours={openHours}
-            mapSrc={mapSrc}
-          />
+          <TrackVisibility>
+            <Map
+              ref={this.ref}
+              stationName={stationName}
+              street={street}
+              contact={contact}
+              openHours={openHours}
+              mapSrc={mapSrc}
+            />
+          </TrackVisibility>
         </div>
       </div>
     );
