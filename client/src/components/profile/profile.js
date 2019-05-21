@@ -10,14 +10,13 @@ state = {
   userProfile: null,
   searchStatus: 'idle',
   username: '',
-  email:'',
   changeConfig:{
-     email:'',
-     phone:'',
-     bloodType:'',
-     validAge:null,
-     goothealth:null,
-     recentSurgery:null,
+     email:'a',
+     phone:'0',
+     bloodType:'a',
+     validAge:false,
+     goothealth:false,
+     recentSurgery:false,
      notification:false
   }
 }
@@ -94,22 +93,59 @@ displaySearchStatus = (status) => (
   </>
 );
 handleInputChange = event => {
-  if (event.target.name === 'email')
-    this.setState({email: event.target.value });
+  console.log(event.target);
+  console.log(this.state.changeConfig.email);
+  let changeConfig = {...this.state.changeConfig};
+  if (event.target.name === 'email'){
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          email: event.target.value
+      }
+  });
+}
   else if (event.target.name == 'phone')
-    this.setState({ phone: event.target.value });
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          phone: event.target.value
+      }
+  });
   else if (event.target.name == 'bloodType')
-    this.setState({ bloodType: event.target.value });
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          bloodType: event.target.value
+      }
+  });
   else if (event.target.name == 'validAge')
-    this.setState({ validAge: event.target.checked });
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          validAge: event.target.checked
+      }
+  });
   else if (event.target.name == 'healthStatus')
-    this.setState({ goothealth: event.target.checked });
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          goodHealth: event.target.checked
+      }
+  });
   else if (event.target.name == 'recentSurgery')
-    this.setState({ recentSurgery: event.target.checked });
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          recentSurgery: event.target.checked
+      }
+  });
   else if (event.target.name == 'notification')
-    this.setState({ notification: event.target.checked });
-  else console.log('nochange');
-  console.log('current save',this.state.changeConfig);
+  this.setState({
+      changeConfig: {
+          ...this.state.changeConfig,
+          notification: event.target.checked
+      }
+  });
 };
 showUserConfig = (isVerified) => {
   if(isVerified) {
@@ -147,6 +183,7 @@ showUserConfig = (isVerified) => {
                 name="bloodtype"
                 placeholder="Blood type"
                 type="text"
+                value=''
                 onChange={this.handleInputChange}
               /></div>
               <div>Older than 18 and weight 50 kg+<input
@@ -186,7 +223,40 @@ showUserConfig = (isVerified) => {
     </>);
 }};
 saveConfig = (configObj) => {
-  console.log('saved config',configObj);
+  const {
+     email,
+     phone,
+     bloodType,
+     validAge,
+     goothealth,
+     recentSurgery,
+     notification
+   } = this.state;
+
+  fetch('/updateprofile', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email,
+      phone,
+      bloodType,
+      validAge,
+      goothealth,
+      recentSurgery,
+      notification
+    })
+  })
+  .then(res => {
+    this.setState({searchStatus:'updating'})
+    return res.json();
+  })
+  .then(data => {
+    if (data.updated) {
+      this.setState({searchStatus:'updated'});
+    } else this.setState({ searchStatus: 'updatefailed'});
+  })
 }
 editConfig = () => {
   this.setState({mode:'edit'});
@@ -208,6 +278,12 @@ render(){
       return (this.displaySearchStatus('Finished looking...'));
      case 'notfound':
       return (this.displaySearchStatus('Profile not found...'));
+     case 'updating':
+      return (this.displaySearchStatus('Updating your profile...'));
+     case 'updated':
+      return (this.props.history.push('/profile'));
+     case 'updatefailed':
+      return (<h1>Failed to update your profile, to go back please click here: <a href='/profile'> my profile</a></h1>);
      case 'found':
       return (this.displaySearchStatus('Profile found...'));
      case 'displayNotFound':
