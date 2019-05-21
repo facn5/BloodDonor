@@ -1,27 +1,24 @@
 const database = require('../database/mongodb');
 
 exports.post = (
-  {
-    user = 'jjj',
-    bloodType,
-    validAge,
-    healthStatus,
-    recentSurgery,
-    getNotification,
-  },
-  res,
+    {
+        user = 'yeye',
+        bloodType,
+        pValidAge,
+        pHealthStatus,
+        pRecentSurgery,
+        pGetNotification,
+    },
+    res,
 ) => {
-  const config = {
-    bloodType,
-    validAge,
-    healthStatus,
-    recentSurgery,
-    getNotification,
-  };
-  database.findOneAndUpdateUser(user, { config }, (err, success) => {
-    if (err) throw err;
-    else {
-      console.log('stam');
-    }
-  });
+    const config = {
+        bloodType,
+        pValidAge,
+        pHealthStatus,
+        pRecentSurgery,
+        pGetNotification,
+    };
+    database.findOneAndUpdateUser(user, { config }, (err, success) => {
+        if (err) throw err;
+    });
 };
