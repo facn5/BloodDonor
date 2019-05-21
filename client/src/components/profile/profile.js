@@ -11,19 +11,32 @@ state = {
 }
 
 componentDidMount(){
-  fetch(`/getProfile/${JSON.parse(window.atob(cookie.load('udetails').split('.')[1])).u$u}`)
-  .then(res => {
-    this.setState({searchStatus:'searching'});
-     return res.json();
-  })
-  .then(results => {
-    this.setState({
-      userProfile:results.data,
-      searchStatus:'finished'})
-      console.log(results);
-      return results;
-    })
-  .then(profile => {profile.data === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
+  let udetails = cookie.load('udetails');
+  if(udetails){
+    udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
+    if(udetails){
+      if(isAuthorized(udetails)){
+      fetch(`/getProfile/${udetails}`)
+      .then(res => {
+        this.setState({searchStatus:'searching'});
+        return res.json();
+      })
+      .then(results => {
+        this.setState({
+          userProfile:results.data,
+          searchStatus:'finished'})
+          console.log(results);
+          return results;
+      })
+      .then(profile => {profile.data === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
+     }
+  } else {
+    this.setState({searchStatus:'notfound'})
+  }
+}
+else{
+  this.setState({searchStatus:'notfound'})
+}
 };
 displaySearchStatus = (status) => (
   <>
