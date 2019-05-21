@@ -9,8 +9,8 @@
   align-items: center;
 }
 
-input,
-button {
+.input,
+.btn {
   display: block;
   padding: 13px;
   margin: 10px;
@@ -19,11 +19,11 @@ button {
   margin-right: auto;
 }
 
-input {
+.input {
   border: 1px solid #f77;
 }
 
-button {
+.btn {
   margin: 20px auto;
   border: solid 1px black;
   font-size: 16px;
