@@ -191,7 +191,7 @@ class Signup extends Component {
         .then(data => {
           this.setState({ dbResult: data.result });
 
-          if (data.success)
+          if (data.success){
             this.setState({
               success: 'green',
               borders: {
@@ -201,6 +201,8 @@ class Signup extends Component {
                 phoneNumber: 'green'
               }
             });
+            window.location.href = '/';
+          }
           else this.setState({ success: 'red' });
         })
         .catch(err => console.log(err));
