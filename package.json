@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.1.10",
+    "node-cron": "^2.0.3",
     "parcel": "^1.12.3",
     "parcel-bundler": "^1.11.0",
     "path": "^0.12.7",
