@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import cookie from 'react-cookie'
 import './styles'
+import { PassThrough } from "stream";
 
 class Regform extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bloodType: "A+",
-      validAge: "yes",
-      healthStatus: "no",
-      recentSurgery: "no",
-      getNotification: "yes"
+      bloodType: "",
+      validAge: "",
+      healthStatus: "",
+      recentSurgery: "",
+      getNotification: ""
     }
     this.onRadioChange = this.onRadioChange.bind(this)
+    this.onRadioChangeBT = this.onRadioChangeBT.bind(this)
   }
 
   // componentDidMount() {
@@ -45,8 +47,11 @@ class Regform extends Component {
   // }
 
   handleSubmit = () => {
-    console.log('btn clicked');
     const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
+    let pValidAge = JSON.parse(validAge);
+    let pHealthStatus = JSON.parse(healthStatus);
+    let pRecentSurgery = JSON.parse(recentSurgery);
+    let pGetNotification = JSON.parse(getNotification);
     fetch('/getProfile', {
       method: 'POST',
       headers: {
@@ -54,10 +59,10 @@ class Regform extends Component {
       },
       body: JSON.stringify({
         bloodType,
-        validAge,
-        healthStatus,
-        recentSurgery,
-        getNotification
+        pValidAge,
+        pHealthStatus,
+        pRecentSurgery,
+        pGetNotification
       })
     })
       .then(res => res.json())
@@ -65,7 +70,13 @@ class Regform extends Component {
   }
 
   onRadioChange(e) {
-    console.log(`${e.target.name} = ${e.target.value}`);
+    let x = JSON.parse(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  onRadioChangeBT(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -81,44 +92,44 @@ class Regform extends Component {
               name="bloodType"
               value="A+"
               checked={this.state.bloodType === "A+"}
-              onChange={this.onRadioChange} /> A+
+              onChange={this.onRadioChangeBT} /> A+
             <input type="radio"
               name="bloodType"
               value="A-"
               checked={this.state.bloodType === "A-"}
-              onChange={this.onRadioChange} /> A-
+              onChange={this.onRadioChangeBT} /> A-
               <input type="radio"
               name="bloodType"
               value="B+"
               checked={this.state.bloodType === "B+"}
-              onChange={this.onRadioChange} /> B+
+              onChange={this.onRadioChangeBT} /> B+
               <input type="radio"
               name="bloodType"
               value="B-"
               checked={this.state.bloodType === "B-"}
-              onChange={this.onRadioChange} /> B-
+              onChange={this.onRadioChangeBT} /> B-
               </div>
           <div className="answersDiv">
             <input type="radio"
               name="bloodType"
               value="AB+"
               checked={this.state.bloodType === "AB+"}
-              onChange={this.onRadioChange} /> AB+
+              onChange={this.onRadioChangeBT} /> AB+
               <input type="radio"
               name="bloodType"
               value="AB-"
               checked={this.state.bloodType === "AB-"}
-              onChange={this.onRadioChange} /> AB-
+              onChange={this.onRadioChangeBT} /> AB-
               <input type="radio"
               name="bloodType"
               value="O+"
               checked={this.state.bloodType === "O+"}
-              onChange={this.onRadioChange} /> O+
+              onChange={this.onRadioChangeBT} /> O+
               <input type="radio"
               name="bloodType"
               value="O-"
               checked={this.state.bloodType === "O-"}
-              onChange={this.onRadioChange} /> O-
+              onChange={this.onRadioChangeBT} /> O-
               </div>
         </div>
 
@@ -127,13 +138,13 @@ class Regform extends Component {
           <div className="answersDiv">
             <input type="radio"
               name="validAge"
-              value="yes"
-              checked={this.state.validAge === "yes"}
+              value="true"
+              checked={this.state.validAge === "true"}
               onChange={this.onRadioChange} /> Yes
             <input type="radio"
               name="validAge"
-              value="no"
-              checked={this.state.validAge === "no"}
+              value="false"
+              checked={this.state.validAge === "false"}
               onChange={this.onRadioChange} /> No
           </div>
         </div>
@@ -143,13 +154,13 @@ class Regform extends Component {
           <div className="answersDiv">
             <input type="radio"
               name="healthStatus"
-              value="yes"
-              checked={this.state.healthStatus === "yes"}
+              value="true"
+              checked={this.state.healthStatus === "true"}
               onChange={this.onRadioChange} /> Yes
             <input type="radio"
               name="healthStatus"
-              value="no"
-              checked={this.state.healthStatus === "no"}
+              value="false"
+              checked={this.state.healthStatus === "false"}
               onChange={this.onRadioChange} /> No
           </div>
         </div>
@@ -159,13 +170,13 @@ class Regform extends Component {
           <div className="answersDiv">
             <input type="radio"
               name="recentSurgery"
-              value="yes"
-              checked={this.state.recentSurgery === "yes"}
+              value="true"
+              checked={this.state.recentSurgery === "true"}
               onChange={this.onRadioChange} /> Yes
             <input type="radio"
               name="recentSurgery"
-              value="no"
-              checked={this.state.recentSurgery === "no"}
+              value="false"
+              checked={this.state.recentSurgery === "false"}
               onChange={this.onRadioChange} /> No
           </div>
         </div>
@@ -175,13 +186,13 @@ class Regform extends Component {
           <div className="answersDiv">
             <input type="radio"
               name="getNotification"
-              value="yes"
-              checked={this.state.getNotification === "yes"}
+              value="true"
+              checked={this.state.getNotification === "true"}
               onChange={this.onRadioChange} /> Yes
             <input type="radio"
               name="getNotification"
-              value="no"
-              checked={this.state.getNotification === "no"}
+              value="false"
+              checked={this.state.getNotification === "false"}
               onChange={this.onRadioChange} /> No
           </div>
         </div>
