@@ -201,7 +201,7 @@ class Signup extends Component {
                 phoneNumber: 'green'
               }
             });
-            window.location.href = '/';
+             this.props.history.push('/');
           }
           else this.setState({ success: 'red' });
         })
