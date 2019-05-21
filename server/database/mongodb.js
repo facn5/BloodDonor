@@ -17,6 +17,19 @@ const findAllIn = (colName, query, cb) => {
   });
 };
 
+const findOneAndUpdateUser = (user, query, cb) => {
+  const client = new MongoClient(mongoURI, { useNewUrlParser: true });
+  client.connect((err) => {
+    if (err) throw err;
+    const db = client.db('bloodonor');
+    db.collection('users').findOneAndUpdate(user, { $set: { query } }, (error, result) => {
+      if (error) cb(error);
+      cb(null, result);
+    });
+    client.close();
+  });
+};
+
 // eslint-disable-next-line no-unused-vars
 const findOneIn = (colName, query, cb) => {
   const client = new MongoClient(mongoURI, { useNewUrlParser: true });
@@ -78,4 +91,5 @@ module.exports = {
   findAllIn,
   findOneIn,
   insertOneInto,
+  findOneAndUpdateUser,
 };
