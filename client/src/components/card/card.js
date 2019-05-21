@@ -25,14 +25,14 @@ export default class Card extends React.Component {
       active
     } = this.props;
     return (
-      <div id={index} className={active ? "showMore" : "hideAll"}>
-        <div className="cardDetails">
-          <div className="subContainer">
+      <>
+        <div id={index} className={"card"}>
+          <div className="cardDetails">
             <p>{stationName},</p>
             <p>{location},</p>
             <p>
               <img
-                className="imgDim1"
+                className="imgDim"
                 src="https://img.icons8.com/pastel-glyph/64/000000/--bloodbag.png"
               />
               {bloodType}
@@ -40,15 +40,15 @@ export default class Card extends React.Component {
             <p>{status}</p>
           </div>
 
-          <div className="subContainer facebook">
+          <div>
             <FacebookShareButton
-              children={<FacebookIcon round={true} size={40} />}
+              children={<FacebookIcon round={true} size={50} />}
               quote="You can save his life! Be his hero"
               hashtag="#Save_A_Life"
               url="https://www.facebook.com/TheDigitalTech/"
             />
           </div>
-          <div className="subContainer">
+          <div>
             <a
               href={"#" + index}
               onClick={() => {
@@ -71,7 +71,7 @@ export default class Card extends React.Component {
             mapSrc={mapSrc}
           />
         </div>
-      </div>
+      </>
     );
   }
 }
