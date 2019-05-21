@@ -25,7 +25,7 @@ const findOneIn = (colName, query, cb) => {
     const col = client.db('blooddonor');
     col.collection(colName).findOne(query, (error, res) => {
       if (error) cb(error);
-      cb(res);
+      cb(null, res);
     });
     client.close();
   });
@@ -63,7 +63,6 @@ const card = {
 
 // eslint-disable-next-line no-unused-vars
 const deleteOneFrom = (colName, obj, cb) => {
-  const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
     const db = client.db('blooddonor');
@@ -77,4 +76,6 @@ const deleteOneFrom = (colName, obj, cb) => {
 
 module.exports = {
   findAllIn,
+  findOneIn,
+  insertOneInto,
 };

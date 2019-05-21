@@ -29,37 +29,41 @@ class Signin extends Component {
       .then(data => {
         this.setState({ dbResult: data.result });
 
-        if (data.success) this.setState({ success: 'green' });
-        else this.setState({ success: 'red' });
+        if (data.success) {
+          this.setState({ success: 'green' });
+        } else this.setState({ success: 'red' });
       })
       .catch(err => console.log(err));
   };
   render() {
     return (
-      <div className="signInContainer">
-        <h1 className="center">Sign in</h1>
+      <div className='signInContainer'>
+        <h1 className='center'>Sign in</h1>
 
         <input
           value={this.state.username}
           onChange={this.handleChange}
-          name="username"
-          type="text"
-          placeholder="username"
+          name='username'
+          type='text'
+          placeholder='username'
         />
         <input
-          autoComplete="off"
+          autoComplete='off'
           value={this.state.password}
           onChange={this.handleChange}
-          name="password"
-          type="password"
-          placeholder="password"
+          name='password'
+          type='password'
+          placeholder='password'
         />
 
-        <button onClick={this.handleSubmit} className="center" type="submit">
+        <button onClick={this.handleSubmit} className='center' type='submit'>
           Sign in!
         </button>
         <p style={{ color: this.state.success }}>{this.state.dbResult}</p>
-        <h3 className="center" onClick={() => props.history.push('/signup')}>
+        <h3
+          className='center'
+          onClick={() => this.props.history.push('/signup')}
+        >
           Sign up
         </h3>
       </div>
