@@ -1,10 +1,32 @@
 .questionCard {
   display: block;
-  justify-content: space-between;
   background-color: #f77;
   border-radius: 10px;
   font-family: "ubuntu";
   font-size: 18px;
   margin: 15px;
   padding: 10px;
+}
+
+.answersDiv {
+  display: inline-flex;
+}
+
+.button {
+  background: #ff7777;
+  mix-blend-mode: darken;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+}
+
+.container {
+  display: inline-grid;
+}
+
+.btnContainer {
+  display: inline-flex;
+  justify-content: space-around;
 }
