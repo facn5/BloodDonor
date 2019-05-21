@@ -45,9 +45,22 @@ const insertOneInto = (colName, obj, cb) => {
   });
 };
 
+const insertManyInto = (colName, obj, cb) => {
+  const client = new MongoClient(mongoURI, { useNewUrlParser: true });
+  client.connect((err) => {
+    if (err) throw err;
+    const db = client.db('blooddonor');
+    db.collection(colName).insertOne(obj, (error) => {
+      if (error) cb(error);
+      cb(null, obj.length, ' documents inserted');
+    });
+    client.close();
+  });
+};
+
 const url = 'https://www.google.com/maps/embed?pb=';
 const card = {
-  stationName: 'Wolfson Medical Center',
+  stationName: '0000',
   location: 'Holon',
   bloodType: 'O-',
   status: 'Critical',
@@ -56,13 +69,15 @@ const card = {
   openHours: '8AM - 12AM',
   mapSrc: `${url}!1m18!1m12!1m3!1d214543.62155329392!2d35.27562295560184!3d32.838788370051596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151dce702593ec2d%3A0x9f0d03dba0a49fdd!2sGalilee+Medical+Center!5e0!3m2!1sen!2sil!4v1558107992086!5m2!1sen!2sil`,
 };
+const expDate = '05/04/2017';
 
-// insertOneInto('cards', { card }, (res) => {
+// insertOneInto('cards', { card, expDate }, (res) => {
 //   console.log(res);
 // });
 
 // eslint-disable-next-line no-unused-vars
 const deleteOneFrom = (colName, obj, cb) => {
+  const client = new MongoClient(mongoURI, { useNewUrlParser: true });
   client.connect((err) => {
     if (err) throw err;
     const db = client.db('blooddonor');
@@ -78,4 +93,6 @@ module.exports = {
   findAllIn,
   findOneIn,
   insertOneInto,
+  insertManyInto,
+  deleteOneFrom,
 };
