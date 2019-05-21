@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import cookie from 'react-cookie'
 import './styles'
-import { PassThrough } from "stream";
 
 class Regform extends Component {
   constructor(props) {
