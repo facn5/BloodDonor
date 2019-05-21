@@ -31,13 +31,14 @@ class Signin extends Component {
 
         if (data.success) {
           this.setState({ success: 'green' });
+          this.props.history.push('/');
         } else this.setState({ success: 'red' });
       })
       .catch(err => console.log(err));
   };
   render() {
     return (
-      <div className='signInContainer'>
+      <div className='signinContainer'>
         <h1 className='center'>Sign in</h1>
 
         <input
