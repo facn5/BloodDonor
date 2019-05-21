@@ -42,7 +42,6 @@ class Signin extends Component {
         <h1 className='center'>Sign in</h1>
 
         <input
-          className='input'
           value={this.state.username}
           onChange={this.handleChange}
           name='username'
@@ -50,7 +49,6 @@ class Signin extends Component {
           placeholder='username'
         />
         <input
-          className='input'
           autoComplete='off'
           value={this.state.password}
           onChange={this.handleChange}
@@ -59,7 +57,7 @@ class Signin extends Component {
           placeholder='password'
         />
 
-        <button onClick={this.handleSubmit} className='center btn' type='submit'>
+        <button onClick={this.handleSubmit} className='center' type='submit'>
           Sign in!
         </button>
         <p style={{ color: this.state.success }}>{this.state.dbResult}</p>
