@@ -30,7 +30,7 @@ componentDidMount(){
             searchStatus:'finished'})
             return results;
         })
-        .then(profile => {profile.data === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
+        .then(profile => {profile.data.config === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
        }else{
         this.setState({searchStatus:'notfound'})
       }
