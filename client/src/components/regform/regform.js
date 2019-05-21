@@ -46,26 +46,45 @@ class Regform extends Component {
   // }
 
   handleSubmit = () => {
+    console.log("btn clicked");
     const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
-    let pValidAge = JSON.parse(validAge);
-    let pHealthStatus = JSON.parse(healthStatus);
-    let pRecentSurgery = JSON.parse(recentSurgery);
-    let pGetNotification = JSON.parse(getNotification);
-    fetch('/getProfile', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        bloodType,
-        pValidAge,
-        pHealthStatus,
-        pRecentSurgery,
-        pGetNotification
+    if (bloodType != "" && validAge != "" && healthStatus != "" && recentSurgery != "" && getNotification != "") {
+      let pValidAge = JSON.parse(validAge);
+      let pHealthStatus = JSON.parse(healthStatus);
+      let pRecentSurgery = JSON.parse(recentSurgery);
+      let pGetNotification = JSON.parse(getNotification);
+      fetch('/getProfile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          bloodType,
+          pValidAge,
+          pHealthStatus,
+          pRecentSurgery,
+          pGetNotification
+        })
       })
-    })
-      .then(res => res.json())
-      .catch(err => console.log(err));
+        .then(res => res.json())
+        .catch(err => console.log(err));
+    } else {
+      fetch('/getProfile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          bloodType,
+          validAge,
+          healthStatus,
+          recentSurgery,
+          getNotification
+        })
+      })
+        .then(res => res.json())
+        .catch(err => console.log(err));
+    }
   }
 
   onRadioChange(e) {
