@@ -109,6 +109,7 @@ a {
   }
   .nav-links a {
     color: white;
+    font-size: 20px;
   }
   .nav-links li {
     opacity: 0;
@@ -144,4 +145,8 @@ a {
 
 .toggle .line3 {
   transform: rotate(45deg) translate(-8px, -8.5px);
+}
+
+.hideProfile{
+  display:none;
 }
