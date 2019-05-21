@@ -11,16 +11,14 @@ const hashPassword = (password, callback) => {
 };
 
 const functions = {
-  sign: value => {
-    return crypto
-      .createHmac('sha256', 'super secret')
-      .update(value)
-      .digest('hex');
-  },
+  sign: value => crypto
+    .createHmac('sha256', 'super secret')
+    .update(value)
+    .digest('hex'),
   validate: (value, hash) => {
     const correctHash = functions.sign(value);
     return correctHash === hash;
-  }
+  },
 };
 
 const comparePasswords = (password, hashedPassword, callback) => {
@@ -30,5 +28,5 @@ const comparePasswords = (password, hashedPassword, callback) => {
 module.exports = {
   hash: hashPassword,
   functions,
-  compare: comparePasswords
+  compare: comparePasswords,
 };
