@@ -2,9 +2,9 @@ const cron = require('node-cron');
 const query = require('../database/mongodb.js');
 const utils = require('../utils.js');
 
-// this job triggers every 24h to clean the expired cards and move them to expired collection
+// this job triggers every 12h to clean the expired cards and move them to expired collection
 const expiredCardsCleaner = () => {
-  cron.schedule('* * * * *', () => {
+  cron.schedule('12  * * * *', () => {
     query.findAllIn('cards', { expDate: { $exists: true } }, (err, res) => {
       if (err) return err;
 
