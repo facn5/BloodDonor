@@ -53,7 +53,7 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
                       const cookie = sign(userDetails, SECRET);
 
                       res.cookie('jwt', cookie, {
-                        httpOnly: true,
+                        httpOnly: false,
                       });
                       res.json({
                         success: true,
@@ -102,7 +102,7 @@ exports.signin = ({ username, password }, res) => {
           const cookie = sign(userDetails, SECRET);
 
           res.cookie('udetails', cookie, {
-            httpOnly: true,
+            httpOnly: false,
           });
           res.json({
             success: true,
