@@ -1,23 +1,53 @@
 import React, { Component } from "react";
+import cookie from 'react-cookie'
 import './styles'
 
 class Regform extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bloodType: "",
-      validAge: "",
-      healthStatus: "",
-      recentSurgey: "",
-      getNotification: ""
+      bloodType: "A+",
+      validAge: "yes",
+      healthStatus: "no",
+      recentSurgery: "no",
+      getNotification: "yes"
     }
     this.onRadioChange = this.onRadioChange.bind(this)
   }
 
+  // componentDidMount() {
+  //   let udetails = cookie.load('udetails');
+  //   if (udetails) {
+  //     udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
+  //     if (udetails) {
+  //       this.isAuthorized((authorized) => {
+  //         if (authorized) {
+  //           console.log(udetails);
+  //         }
+  //       });
+  //     }
+  //   } else {
+  //     console.log("udetails undefined");
+  //   }
+  // };
+
+  // isAuthorized = (cb) => {
+  //   this.setState({ searchStatus: 'checkauth' });
+  //   fetch('/checkAuth')
+  //     .then(res => {
+  //       this.setState({ searchStatus: 'verifyreq' })
+  //       return res.json()
+  //     })
+  //     .then(data => {
+  //       console.log('authorized', data.authenticated);
+  //       return cb(data.authenticated)
+  //     });
+  // }
+
   handleSubmit = () => {
     console.log('btn clicked');
-    const { bloodType, validAge, healthStatus, recentSurgey, getNotification } = this.state;
-    fetch('/getProfile/:', {
+    const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
+    fetch('/getProfile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,7 +56,7 @@ class Regform extends Component {
         bloodType,
         validAge,
         healthStatus,
-        recentSurgey,
+        recentSurgery,
         getNotification
       })
     })
@@ -128,14 +158,14 @@ class Regform extends Component {
           <p>Have you gone throw any major surgery since least 6 months?</p>
           <div className="answersDiv">
             <input type="radio"
-              name="recentSurgey"
+              name="recentSurgery"
               value="yes"
-              checked={this.state.recentSurgey === "yes"}
+              checked={this.state.recentSurgery === "yes"}
               onChange={this.onRadioChange} /> Yes
             <input type="radio"
-              name="recentSurgey"
+              name="recentSurgery"
               value="no"
-              checked={this.state.recentSurgey === "no"}
+              checked={this.state.recentSurgery === "no"}
               onChange={this.onRadioChange} /> No
           </div>
         </div>
