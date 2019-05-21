@@ -4,6 +4,7 @@ const cards = require('./cards.js');
 const insp = require('./inspCards.js');
 const authentication = require('./authentication');
 const userConfig = require('./userConfig');
+const userinfo = require('./profile');
 
 const router = express.Router();
 
@@ -14,6 +15,10 @@ router.get('/checkauth', (req, res) => {
 });
 
 router.get('/getInsp', insp.get);
+
+router.get('/getProfile/:username', (req, res) => {
+  userinfo.get(req, res);
+});
 
 router.get('*', (req, res) => {
   res.sendFile(
