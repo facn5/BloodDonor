@@ -19,12 +19,12 @@ a {
   height: 5px;
   background-color: #fff;
   margin: 5px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-container {
   position: relative;
-  height: 15vh;
+  height: 12vh;
 }
 
 .nav {
@@ -35,8 +35,8 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15vh;
-  transition: background 0.4s ease;
+  height: 12vh;
+  transition: background 0.3s ease;
 }
 
 .nav-links {
@@ -49,6 +49,11 @@ a {
   list-style: none;
 }
 
+.nav-links li :hover {
+  background-color: #f55;
+  list-style: none;
+  padding: 25%;
+}
 .nav-links a {
   color: black;
   letter-spacing: 1.2px;

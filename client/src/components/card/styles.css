@@ -11,7 +11,9 @@
   width: 96%;
   margin-top: 1%;
 }
-
+.card:hover {
+  background-color: #f55;
+}
 .cardDetails {
   justify-self: left;
   margin-left: 3%;
