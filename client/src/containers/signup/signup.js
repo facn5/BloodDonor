@@ -220,6 +220,7 @@ class Signup extends Component {
       <div className="signupContainer">
         <h1 className="center">Sign up</h1>
         <input
+          className='input'
           value={username}
           onChange={this.handleChange}
           name="username"
@@ -229,6 +230,7 @@ class Signup extends Component {
           style={{ borderColor: borders.username }}
         />
         <input
+          className='input'
           autoComplete="off"
           name="password"
           value={password}
@@ -239,6 +241,7 @@ class Signup extends Component {
           style={{ borderColor: borders.password }}
         />
         <input
+          className='input'
           autoComplete="off"
           name="confirmPassword"
           value={confirmPassword}
@@ -249,6 +252,7 @@ class Signup extends Component {
           style={{ borderColor: borders.confirmPassword }}
         />
         <input
+          className='input'
           name="phoneNumber"
           value={phoneNumber}
           onChange={this.handleChange}
@@ -257,7 +261,7 @@ class Signup extends Component {
           onBlur={this.checkValues}
           style={{ borderColor: borders.phoneNumber }}
         />
-        <button onClick={this.handleSubmit} name="submit">
+        <button className='.btn' onClick={this.handleSubmit} name="submit">
           Signup!
         </button>
         <p style={{ color: success }}>{dbResult}</p>
