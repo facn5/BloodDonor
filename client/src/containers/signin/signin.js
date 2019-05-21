@@ -31,6 +31,7 @@ class Signin extends Component {
 
         if (data.success) {
           this.setState({ success: 'green' });
+          this.props.history.push('/');
         } else this.setState({ success: 'red' });
       })
       .catch(err => console.log(err));
