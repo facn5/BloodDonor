@@ -25,10 +25,8 @@ const comparePasswords = (password, hashedPassword, callback) => {
   bcrypt.compare(password, hashedPassword, callback);
 };
 
-// this fun compare the date of the card from db with current date
+// This function compares the date of the card from db with current date
 function isValid(dbDate) {
-  console.log('DB date:', dbDate);
-
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const yyyy = String(today.getFullYear());
