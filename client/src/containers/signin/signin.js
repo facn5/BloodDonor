@@ -38,7 +38,7 @@ class Signin extends Component {
   };
   render() {
     return (
-      <div className='signInContainer'>
+      <div className='signinContainer'>
         <h1 className='center'>Sign in</h1>
 
         <input
