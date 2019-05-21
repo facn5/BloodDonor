@@ -9,19 +9,19 @@
   align-items: center;
 }
 
-.input,
-.btn {
+.signupContainer input,
+.signupContainer button {
   display: block;
   padding: 13px;
   margin: 10px;
   border-radius: 10px;
 }
 
-.input {
+.signupContainer input {
   border: 1px solid #f77;
 }
 
-.btn {
+.signupContainer button {
   margin: 30px auto;
   border: solid 1px black;
   font-size: 16px;
