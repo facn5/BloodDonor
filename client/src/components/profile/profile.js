@@ -3,6 +3,7 @@ import './profile.css';
 import Spinner from "react-spinner-material";
 import cookie from 'react-cookie';
 
+
 export class Profile extends React.Component {
 state = {
   mode: 'view',
@@ -15,29 +16,53 @@ componentDidMount(){
   if(udetails){
     udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
     if(udetails){
-      if(isAuthorized(udetails)){
-      fetch(`/getProfile/${udetails}`)
-      .then(res => {
-        this.setState({searchStatus:'searching'});
-        return res.json();
-      })
-      .then(results => {
-        this.setState({
-          userProfile:results.data,
-          searchStatus:'finished'})
-          console.log(results);
-          return results;
-      })
-      .then(profile => {profile.data === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
-     }
-  } else {
-    this.setState({searchStatus:'notfound'})
+      this.isAuthorized((authorized)=>{
+        if(authorized) {
+        this.setState({searchStatus:'reqverified'})
+        fetch(`/getProfile/${udetails}`)
+        .then(res => {
+          this.setState({searchStatus:'searching'});
+          return res.json();
+        })
+        .then(results => {
+          this.setState({
+            userProfile:results.data,
+            searchStatus:'finished'})
+            return results;
+        })
+        .then(profile => {profile.data === null?this.setState({searchStatus:'notfound'}):this.setState({searchStatus:'found'})})
+       }else{
+        this.setState({searchStatus:'notfound'})
+      }
+   });
+ }else {
+     this.setState({searchStatus:'notfound'})
+   }
+}else{
+   this.setState({searchStatus:'notfound'})
+      }
+};
+
+
+  isAuthorized = (cb) => {
+    this.setState({searchStatus:'checkauth'});
+    fetch('/checkAuth')
+  .then(res=>{
+    this.setState({searchStatus:'verifyreq'})
+    return res.json()})
+  .then(data=>{
+    console.log('authorized',data.authenticated);
+    return cb(data.authenticated)});
+}
+
+componentDidUpdate(){
+  console.log('search status',this.state.searchStatus);
+  if(this.state.searchStatus === 'notfound'){
+    this.setState({searchStatus:'displayNotFound'});
+  } else if(this.state.searchStatus === 'found') {
+    this.setState({searchStatus:'displayUserDetails'})
   }
 }
-else{
-  this.setState({searchStatus:'notfound'})
-}
-};
 displaySearchStatus = (status) => (
   <>
   <Spinner
@@ -50,17 +75,15 @@ displaySearchStatus = (status) => (
   <p className='searchStatus'>{status}</p>
   </>
 );
-componentDidUpdate(){
-
-  if(this.state.searchStatus === 'notfound'){
-    this.setState({searchStatus:'displayNotFound'});
-  } else if(this.state.searchStatus === 'found') {
-    this.setState({searchStatus:'displayUserDetails'})
-  }
-}
 render(){
-  console.log(this.state.userProfile);
+  console.log('user profile',this.state.userProfile);
    switch(this.state.searchStatus) {
+     case 'checkauth':
+      return (this.displaySearchStatus('Checking authentication...'));
+     case 'verifyreq':
+      return (this.displaySearchStatus('Verifying request...'));
+     case 'reqverified':
+      return (this.displaySearchStatus('Request verfied...'));
      case 'idle':
       return (this.displaySearchStatus('Preparing process...'));
      case 'searching':
