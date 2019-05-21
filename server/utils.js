@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { SECRET } = require('../keys_dev.js');
 
 const hashPassword = (password, callback) => {
   bcrypt.genSalt(10, (err, salt) => {
@@ -12,9 +13,9 @@ const hashPassword = (password, callback) => {
 
 const functions = {
   sign: value => crypto
-      .createHmac('sha256', 'super secret')
-      .update(value)
-      .digest('hex'),
+    .createHmac('sha256', SECRET)
+    .update(value)
+    .digest('hex'),
   validate: (value, hash) => {
     const correctHash = functions.sign(value);
     return correctHash === hash;

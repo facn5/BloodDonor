@@ -52,7 +52,7 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
                       };
                       const cookie = sign(userDetails, SECRET);
 
-                      res.cookie('jwt', cookie, {
+                      res.cookie('udetails', cookie, {
                         httpOnly: false,
                       });
                       res.json({
