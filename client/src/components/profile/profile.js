@@ -65,14 +65,14 @@ componentDidUpdate(){
 }
 displaySearchStatus = (status) => (
   <>
-  <Spinner
-    className="spinner"
-    size={60}
-    spinnerColor={"#333"}
-    spinnerWidth={2}
-    visible={true}
-  />
-  <p className='searchStatus'>{status}</p>
+    <Spinner
+      className="spinner"
+      size={60}
+      spinnerColor={"#333"}
+      spinnerWidth={2}
+      visible={true}
+    />
+      <p className='searchStatus'>{status}</p>
   </>
 );
 render(){
