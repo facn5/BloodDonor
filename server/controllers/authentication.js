@@ -3,7 +3,7 @@ const ppcookie = require('cookie');
 const database = require('../database/mongodb');
 const utils = require('../utils');
 require('env2')('../config.env');
-// const { SECRET } = require('../../keys_dev');
+
 const { SECRET } = process.env;
 
 exports.signup = ({ username, password, phoneNumber }, res) => {
