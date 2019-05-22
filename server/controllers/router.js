@@ -35,7 +35,7 @@ router.post('/signin', ({ body }, res) => {
 });
 
 
-router.post('/getProfile', ({ body }, res) => {
+router.post('/setProfile', ({ body }, res) => {
   userConfig.post(body, res);
 });
 
