@@ -11,7 +11,8 @@ class Regform extends Component {
       healthStatus: "",
       recentSurgery: "",
       getNotification: "",
-      username:""
+      username:"",
+      validate: false
     }
     this.onRadioChange = this.onRadioChange.bind(this)
     this.onRadioChangeBT = this.onRadioChangeBT.bind(this)
@@ -54,8 +55,10 @@ class Regform extends Component {
       pHealthStatus = JSON.parse(healthStatus);
       pRecentSurgery = JSON.parse(recentSurgery);
       pGetNotification = JSON.parse(getNotification);
+      this.setState({ validate: false })
+    } else {
+      this.setState({ validate: true })
     }
-
     fetch('/setProfile', {
       method: 'POST',
       headers: {
@@ -204,6 +207,7 @@ class Regform extends Component {
               onChange={this.onRadioChange} /> No
           </div>
         </div>
+        <div className="validate">{this.state.validate ? "please fill the form" :''}</div>
         <div className="btnContainer">
           <button onClick={this.handleSubmit} className="button">Submit</button>
           <button onClick={()=>this.props.history.push('/')} className="button">Skip</button>
