@@ -10,12 +10,10 @@ state = {
   userProfile: null,
   searchStatus: 'idle',
   username: '',
+  bloodType:'',
   changeConfig:{
-     email:'a',
-     phone:'0',
-     bloodType:'a',
      validAge:false,
-     goothealth:false,
+     goodHealth:false,
      recentSurgery:false,
      notification:false
   }
@@ -96,29 +94,8 @@ handleInputChange = event => {
   console.log(event.target);
   console.log(this.state.changeConfig.email);
   let changeConfig = {...this.state.changeConfig};
-  if (event.target.name === 'email'){
-  this.setState({
-      changeConfig: {
-          ...this.state.changeConfig,
-          email: event.target.value
-      }
-  });
-}
-  else if (event.target.name == 'phone')
-  this.setState({
-      changeConfig: {
-          ...this.state.changeConfig,
-          phone: event.target.value
-      }
-  });
-  else if (event.target.name == 'bloodType')
-  this.setState({
-      changeConfig: {
-          ...this.state.changeConfig,
-          bloodType: event.target.value
-      }
-  });
-  else if (event.target.name == 'validAge')
+
+  if (event.target.name == 'validAge')
   this.setState({
       changeConfig: {
           ...this.state.changeConfig,
@@ -147,6 +124,9 @@ handleInputChange = event => {
       }
   });
 };
+changeHandler = (e) => {
+  this.setState({bloodType:e.target.value})
+}
 showUserConfig = (isVerified) => {
   if(isVerified) {
     return (
@@ -167,25 +147,17 @@ showUserConfig = (isVerified) => {
               </div>
             </div>
             <div className={this.state.mode!=='edit'?'configEditForm section hideEdit':'configEditForm section'}>
-              <div><input
-                name="email"
-                placeholder="Email address"
-                type="email"
-                onChange={this.handleInputChange}
-              /></div>
-              <div><input
-                name="phone"
-                placeholder="Phone number"
-                type="text"
-                onChange={this.handleInputChange}
-              /></div>
-              <div><input
-                name="bloodtype"
-                placeholder="Blood type"
-                type="text"
-                value=''
-                onChange={this.handleInputChange}
-              /></div>
+              <div>
+              <select value={this.state.bloodType} onChange={this.changeHandler}>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+-</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select></div>
               <div>Older than 18 and weight 50 kg+<input
                 name="validAge"
                 type="checkbox"
@@ -206,7 +178,7 @@ showUserConfig = (isVerified) => {
                 type="checkbox"
                 onChange={this.handleInputChange}
               /></div>
-              <button onClick={()=>this.saveConfig(this.state.changeConfig)}><img src="https://img.icons8.com/ios/50/000000/save-as-filled.png"/> Save</button>
+              <button onClick={()=>this.saveConfig()}><img src="https://img.icons8.com/ios/50/000000/save-as-filled.png"/> Save</button>
             </div>
         </div>
       </>);
@@ -222,41 +194,38 @@ showUserConfig = (isVerified) => {
       </div>
     </>);
 }};
-saveConfig = (configObj) => {
+saveConfig = () => {
   const {
-     email,
-     phone,
-     bloodType,
      validAge,
-     goothealth,
+     goodHealth,
      recentSurgery,
      notification
-   } = this.state;
+   } = this.state.changeConfig;
+   const {username, bloodType} = this.state;
+   const obj = {
+     username,
+     bloodType,
+     validAge,
+     goodHealth,
+     recentSurgery,
+     notification
+   }
 
-  fetch('/updateprofile', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email,
-      phone,
-      bloodType,
-      validAge,
-      goothealth,
-      recentSurgery,
-      notification
-    })
-  })
-  .then(res => {
-    this.setState({searchStatus:'updating'})
-    return res.json();
-  })
-  .then(data => {
-    if (data.updated) {
-      this.setState({searchStatus:'updated'});
-    } else this.setState({ searchStatus: 'updatefailed'});
-  })
+   fetch('/setProfile', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(obj)
+   })
+     .then(res => res.json())
+     .then(data =>{if(data.results.modifiedCount===1){
+       alert('successfully updated data');
+       this.props.history.push('/');
+     }else{
+       console.log("nooo");
+     }})
+     .catch(err => console.log(err));
 }
 editConfig = () => {
   this.setState({mode:'edit'});
