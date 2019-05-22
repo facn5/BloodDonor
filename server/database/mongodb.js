@@ -25,6 +25,10 @@ const findOneAndUpdateUser = (filter, obj, cb) => {
     db.collection('users').updateOne(
       { username: { $eq: filter } },
       { $set: obj },
+      (err, result) => {
+        if (err)cb(err);
+        cb(null, result);
+      },
     );
     client.close();
   });
