@@ -91,8 +91,6 @@ displaySearchStatus = (status) => (
   </>
 );
 handleInputChange = event => {
-  console.log(event.target);
-  console.log(this.state.changeConfig.email);
   let changeConfig = {...this.state.changeConfig};
 
   if (event.target.name == 'validAge')
@@ -222,9 +220,8 @@ saveConfig = () => {
      .then(data =>{if(data.results.modifiedCount===1){
        alert('successfully updated data');
        this.props.history.push('/');
-     }else{
-       console.log("nooo");
-     }})
+     }
+     })
      .catch(err => console.log(err));
 }
 editConfig = () => {
