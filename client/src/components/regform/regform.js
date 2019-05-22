@@ -17,35 +17,6 @@ class Regform extends Component {
     this.onRadioChangeBT = this.onRadioChangeBT.bind(this)
   }
 
-  // componentDidMount() {
-  //   let udetails = cookie.load('udetails');
-  //   if (udetails) {
-  //     udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
-  //     if (udetails) {
-  //       this.isAuthorized((authorized) => {
-  //         if (authorized) {
-  //           console.log(udetails);
-  //         }
-  //       });
-  //     }
-  //   } else {
-  //     console.log("udetails undefined");
-  //   }
-  // };
-
-  // isAuthorized = (cb) => {
-  //   this.setState({ searchStatus: 'checkauth' });
-  //   fetch('/checkAuth')
-  //     .then(res => {
-  //       this.setState({ searchStatus: 'verifyreq' })
-  //       return res.json()
-  //     })
-  //     .then(data => {
-  //       console.log('authorized', data.authenticated);
-  //       return cb(data.authenticated)
-  //     });
-  // }
-
   handleSubmit = () => {
     const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
     if (bloodType != "" && validAge != "" && healthStatus != "" && recentSurgery != "" && getNotification != "") {
