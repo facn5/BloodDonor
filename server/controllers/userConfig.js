@@ -12,7 +12,6 @@ exports.post = (
     pGetNotification: obj.notification || obj.pGetNotification,
   };
   database.findOneAndUpdateUser(obj.username, { config }, (err, results) => {
-    console.log('username', obj.username);
     if (err) console.log(err);
     res.json({ results });
   });
