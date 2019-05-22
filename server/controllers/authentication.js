@@ -2,7 +2,9 @@ const { sign, verify } = require('jsonwebtoken');
 const ppcookie = require('cookie');
 const database = require('../database/mongodb');
 const utils = require('../utils');
-const { SECRET } = require('../../keys_dev');
+require('env2')('../config.env');
+
+const { SECRET } = process.env;
 
 exports.signup = ({ username, password, phoneNumber }, res) => {
   if (username && password && phoneNumber) {
