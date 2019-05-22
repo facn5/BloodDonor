@@ -18,10 +18,10 @@ const About = () => {
         <p>Team:-</p>
         <div className="cardDetails">
           <div className="teamMembersSubContainer">
-            <TeamMember name="Tamer" />
-            <TeamMember name="Obaydah" />
-            <TeamMember name="Majd" />
-            <TeamMember name="Karam" />
+            <TeamMember name="Tamer" photo="https://avatars2.githubusercontent.com/u/14230328?s=400&v=4" />
+            <TeamMember name="Obaydah" photo="https://avatars3.githubusercontent.com/u/6875484?s=400&v=4" />
+            <TeamMember name="Majd" photo="https://avatars0.githubusercontent.com/u/33071567?s=400&v=4" />
+            <TeamMember name="Karam" photo="https://avatars3.githubusercontent.com/u/46317630?s=400&v=4" />
           </div>
         </div>
       </div>
