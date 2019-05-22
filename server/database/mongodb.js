@@ -1,5 +1,7 @@
 const { MongoClient } = require('mongodb');
-const { mongoURI } = require('../../keys_dev');
+require('env2')('../config.env');
+
+const { mongoURI } = process.env;
 
 // eslint-disable-next-line no-unused-vars
 const findAllIn = (colName, query, cb) => {
