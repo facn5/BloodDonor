@@ -71,7 +71,6 @@ class Regform extends Component {
         .catch(err => console.log(err));
     } else {
       this.setState({ validate: true })
-      console.log(this.state.validAge);
     }
   }
 
