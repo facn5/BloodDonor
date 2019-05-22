@@ -55,9 +55,10 @@ export class Header extends React.Component {
   onLogin = () => {
     const { authenticated } = this.state;
     if (authenticated === 'Login') this.props.history.push('/login');
-    else
+    else {
     cookie.remove('udetails');
-
+    this.props.history.push('/');
+    }
     this.exitNavbar();
   };
 
