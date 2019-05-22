@@ -5,13 +5,25 @@ import TeamMember from "../../components/TeamMember/TeamMember";
 const About = () => {
   return (
     <div className="aboutContainer">
-      <h1 className="center">About</h1>
-      <h3>Our goal</h3>
+      <h1 className="about">About</h1>
       <div className="cardDetails">
         <div className="subContainer">
-          Our goal is to reach more and more good people like you so we can save
+          <h3 className="center">Our goal</h3>
+          <p>Is to reach more and more good people like you so we can save
           more people lives. Mother’s tears cannot save her child’s life but
           your blood can.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div className="cardDetails">
+          <div className="subContainer">
+            <h3 className="center">Terms of use</h3>
+            <p>Is to reach more and more good people like you so we can save
+              more people lives. Mother’s tears cannot save her child’s life but
+              your blood can.
+          </p>
+          </div>
         </div>
       </div>
       <div className="teamMembersSection">
