@@ -10,7 +10,8 @@ class Regform extends Component {
       validAge: "",
       healthStatus: "",
       recentSurgery: "",
-      getNotification: ""
+      getNotification: "",
+      validate: false
     }
     this.onRadioChange = this.onRadioChange.bind(this)
     this.onRadioChangeBT = this.onRadioChangeBT.bind(this)
@@ -46,13 +47,13 @@ class Regform extends Component {
   // }
 
   handleSubmit = () => {
-    console.log("btn clicked");
     const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
     if (bloodType != "" && validAge != "" && healthStatus != "" && recentSurgery != "" && getNotification != "") {
       let pValidAge = JSON.parse(validAge);
       let pHealthStatus = JSON.parse(healthStatus);
       let pRecentSurgery = JSON.parse(recentSurgery);
       let pGetNotification = JSON.parse(getNotification);
+      this.setState({ validate: false })
       fetch('/getProfile', {
         method: 'POST',
         headers: {
@@ -69,26 +70,12 @@ class Regform extends Component {
         .then(res => res.json())
         .catch(err => console.log(err));
     } else {
-      fetch('/getProfile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          bloodType,
-          validAge,
-          healthStatus,
-          recentSurgery,
-          getNotification
-        })
-      })
-        .then(res => res.json())
-        .catch(err => console.log(err));
+      this.setState({ validate: true })
+      console.log(this.state.validAge);
     }
   }
 
   onRadioChange(e) {
-    let x = JSON.parse(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -214,6 +201,7 @@ class Regform extends Component {
               onChange={this.onRadioChange} /> No
           </div>
         </div>
+        <div className="validate">{this.state.validate ? "please fill the form" : ""}</div>
         <div className="btnContainer">
           <button onClick={this.handleSubmit} className="button">Submit</button>
           <button className="button">Skip</button>
