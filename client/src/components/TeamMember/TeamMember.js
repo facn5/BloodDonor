@@ -6,7 +6,7 @@ const TeamMember = props => {
   return (
     <>
       <div className="memberContainer">
-        <div className="memberSubContainer" />
+        <img className="img" src={props.photo}></img>
         <div>{props.name}</div>
       </div>
     </>
