@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const { SECRET } = require('../keys_dev.js');
+require('env2')('../config.env');
+
+const { SECRET } = process.env;
 
 const hashPassword = (password, callback) => {
   bcrypt.genSalt(10, (err, salt) => {

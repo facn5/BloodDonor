@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.css';
 import '../../containers/style';
+import cookie from 'react-cookie';
 
 export class Header extends React.Component {
   state = {
@@ -33,15 +34,14 @@ export class Header extends React.Component {
     fetch('/checkauth')
       .then(res => res.json())
       .then(data => {
-        if (data.authenticated) {
+        if(data.authenticated){
         if( this.state.authenticated !== 'Log out')
           this.setState({ authenticated: 'Log out' });
-
-        else {
+        } else {
           if (this.state.authenticated !== 'Login')
             this.setState({ authenticated: 'Login' });
         }
-      }});
+      });
   };
 
   exitNavbar = () => {
@@ -55,13 +55,10 @@ export class Header extends React.Component {
   onLogin = () => {
     const { authenticated } = this.state;
     if (authenticated === 'Login') this.props.history.push('/login');
-    else
-      fetch('/signout', { method: 'POST', credentials: 'same-origin' })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) this.setState({ authenticated: 'Login' });
-        });
-
+    else {
+    cookie.remove('udetails');
+    this.props.history.push('/');
+    }
     this.exitNavbar();
   };
 
@@ -80,6 +77,11 @@ export class Header extends React.Component {
     this.exitNavbar();
   };
 
+  onProfile = () => {
+    this.props.history.push('/profile');
+    this.exitNavbar();
+  }
+
   render() {
     return (
       <div className='nav-container'>
@@ -90,20 +92,23 @@ export class Header extends React.Component {
             </a>
           </div>
           <ul className={this.state.slideClass}>
-            <li style={{ animation: `${this.state.animate} 0.4s` }}>
+            <li style={{ animation: `${this.state.animate} 0.2s` }}>
               <a onClick={this.onLogin}>{this.state.authenticated}</a>
             </li>
-            <li style={{ animation: `${this.state.animate} 0.6s` }}>
+            <li style={{ animation: `${this.state.animate} 0.3s` }}>
               <a onClick={this.onInspiration}>Inspiration</a>
             </li>
-            <li style={{ animation: `${this.state.animate} 0.8s` }}>
+            <li style={{ animation: `${this.state.animate} 0.4s` }}>
               <a onClick={this.onDonate}>Donate</a>
             </li>
-            <li style={{ animation: `${this.state.animate} 1.0s` }}>
+            <li style={{ animation: `${this.state.animate} 0.5s` }}>
               <a href='#'>Request</a>
             </li>
-            <li style={{ animation: `${this.state.animate} 1.2s` }}>
+            <li style={{ animation: `${this.state.animate} 0.6s` }}>
               <a onClick={this.onAbout}>About</a>
+            </li>
+            <li className={this.state.authenticated!=='Log out'?'hideProfile':''} style={{ animation: `${this.state.animate} 0.7s` }}>
+              <a onClick={this.onProfile}>My profile</a>
             </li>
           </ul>
           <div className={this.state.mbNavBarClass} onClick={this.ToggleSlide}>
