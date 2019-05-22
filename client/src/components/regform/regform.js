@@ -10,85 +10,74 @@ class Regform extends Component {
       validAge: "",
       healthStatus: "",
       recentSurgery: "",
-      getNotification: ""
+      getNotification: "",
+      username:""
     }
     this.onRadioChange = this.onRadioChange.bind(this)
     this.onRadioChangeBT = this.onRadioChangeBT.bind(this)
   }
 
-  // componentDidMount() {
-  //   let udetails = cookie.load('udetails');
-  //   if (udetails) {
-  //     udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
-  //     if (udetails) {
-  //       this.isAuthorized((authorized) => {
-  //         if (authorized) {
-  //           console.log(udetails);
-  //         }
-  //       });
-  //     }
-  //   } else {
-  //     console.log("udetails undefined");
-  //   }
-  // };
+  componentDidMount() {
+    let udetails = cookie.load('udetails');
+    if (udetails) {
+      udetails = JSON.parse(window.atob(udetails.split('.')[1])).u$u;
+      if (udetails) {
+        this.isAuthorized((authorized) => {
+          if (authorized) {
+            this.setState({username:udetails})
+          }
+        });
+      }
+    } else {
+      this.props.history.push('/');
+    }
+  };
 
-  // isAuthorized = (cb) => {
-  //   this.setState({ searchStatus: 'checkauth' });
-  //   fetch('/checkAuth')
-  //     .then(res => {
-  //       this.setState({ searchStatus: 'verifyreq' })
-  //       return res.json()
-  //     })
-  //     .then(data => {
-  //       console.log('authorized', data.authenticated);
-  //       return cb(data.authenticated)
-  //     });
-  // }
+  isAuthorized = (cb) => {
+    fetch('/checkAuth')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        return cb(data.authenticated)
+      });
+  }
 
   handleSubmit = () => {
-    console.log("btn clicked");
-    const { bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
+    const {username, bloodType, validAge, healthStatus, recentSurgery, getNotification } = this.state;
+    let pValidAge;
+    let pHealthStatus;
+    let pRecentSurgery;
+    let pGetNotification;
     if (bloodType != "" && validAge != "" && healthStatus != "" && recentSurgery != "" && getNotification != "") {
-      let pValidAge = JSON.parse(validAge);
-      let pHealthStatus = JSON.parse(healthStatus);
-      let pRecentSurgery = JSON.parse(recentSurgery);
-      let pGetNotification = JSON.parse(getNotification);
-      fetch('/getProfile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          bloodType,
-          pValidAge,
-          pHealthStatus,
-          pRecentSurgery,
-          pGetNotification
-        })
-      })
-        .then(res => res.json())
-        .catch(err => console.log(err));
-    } else {
-      fetch('/getProfile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          bloodType,
-          validAge,
-          healthStatus,
-          recentSurgery,
-          getNotification
-        })
-      })
-        .then(res => res.json())
-        .catch(err => console.log(err));
+      pValidAge = JSON.parse(validAge);
+      pHealthStatus = JSON.parse(healthStatus);
+      pRecentSurgery = JSON.parse(recentSurgery);
+      pGetNotification = JSON.parse(getNotification);
     }
+    fetch('/getProfile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        bloodType,
+        pValidAge,
+        pHealthStatus,
+        pRecentSurgery,
+        pGetNotification
+      })
+    })
+      .then(res => res.json())
+      .then(data =>{if(data.results.modifiedCount===1){
+        alert('successfully updated data');
+        this.props.history.push('/');
+      }})
+      .catch(err => console.log(err));
   }
 
   onRadioChange(e) {
-    let x = JSON.parse(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -152,7 +141,7 @@ class Regform extends Component {
         </div>
 
         <div className="questionCard">
-          <p>Are you older than 18 and wight more 50KG?</p>
+          <p>Are you older than 18 and wight more 50 KG?</p>
           <div className="answersDiv">
             <input type="radio"
               name="validAge"
@@ -216,7 +205,7 @@ class Regform extends Component {
         </div>
         <div className="btnContainer">
           <button onClick={this.handleSubmit} className="button">Submit</button>
-          <button className="button">Skip</button>
+          <button onClick={()=>this.props.history.push('/')} className="button">Skip</button>
         </div>
       </div>
     );
