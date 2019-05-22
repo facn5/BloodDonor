@@ -33,8 +33,5 @@ router.post('/signin', ({ body }, res) => {
   authentication.signin(body, res);
 });
 
-router.post('/signout', (req, res) => {
-  authentication.logout(req, res);
-});
 
 module.exports = router;

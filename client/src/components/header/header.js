@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.css';
 import '../../containers/style';
+import cookie from 'react-cookie';
 
 export class Header extends React.Component {
   state = {
@@ -33,15 +34,13 @@ export class Header extends React.Component {
     fetch('/checkauth')
       .then(res => res.json())
       .then(data => {
-        if (data.authenticated) {
         if( this.state.authenticated !== 'Log out')
           this.setState({ authenticated: 'Log out' });
-
         else {
           if (this.state.authenticated !== 'Login')
             this.setState({ authenticated: 'Login' });
         }
-      }});
+      });
   };
 
   exitNavbar = () => {
@@ -56,11 +55,7 @@ export class Header extends React.Component {
     const { authenticated } = this.state;
     if (authenticated === 'Login') this.props.history.push('/login');
     else
-      fetch('/signout', { method: 'POST', credentials: 'same-origin' })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) this.setState({ authenticated: 'Login' });
-        });
+    cookie.remove('udetails');
 
     this.exitNavbar();
   };

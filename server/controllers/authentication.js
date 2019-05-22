@@ -29,7 +29,6 @@ exports.signup = ({ username, password, phoneNumber }, res) => {
             utils.hash(password, (utilErr, hashedPassword) => {
               if (utilErr) {
                 res.json({
-                  success: false,
                   result: 'Please try again later!',
                 });
               } else {
@@ -136,12 +135,5 @@ exports.checkCookies = (req, res) => {
         }
       });
     }
-  }
-};
-
-exports.logout = (req, res) => {
-  if (req.headers.cookie) {
-    res.clearCookie('udetails');
-    res.json({ success: true });
   }
 };
