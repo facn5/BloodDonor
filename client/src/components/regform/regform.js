@@ -55,7 +55,8 @@ class Regform extends Component {
       pRecentSurgery = JSON.parse(recentSurgery);
       pGetNotification = JSON.parse(getNotification);
     }
-    fetch('/getProfile', {
+
+    fetch('/setProfile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
