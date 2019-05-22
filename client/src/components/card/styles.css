@@ -18,7 +18,8 @@
   margin: 5px;
 }
 .subContainer {
-  padding: 1rem;
+  padding: 7px;
+  font-size: 22px;
 }
 
 .subContainer.facebook {
