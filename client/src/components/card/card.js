@@ -13,7 +13,8 @@ export default class Card extends React.Component {
 
   render() {
     const {
-      index,
+      num,
+      id,
       stationName,
       bloodType,
       location,
@@ -26,7 +27,7 @@ export default class Card extends React.Component {
     } = this.props;
     return (
       <>
-        <div id={index} className={"card"}>
+        <div id={num} className={"card"}>
           <div className="cardDetails">
             <p>{stationName},</p>
             <p>{location},</p>
@@ -50,7 +51,7 @@ export default class Card extends React.Component {
           </div>
           <div>
             <a
-              href={"#" + index}
+              href={"#" + num}
               onClick={() => {
                 this.props.triggerDisplay(this.props.id);
               }}

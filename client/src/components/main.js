@@ -75,7 +75,8 @@ class Main extends Component {
           .slice(0, 10)
           .map((card, index) => (
             <Card
-              index={"card" + index}
+              num={"card" + index}
+              key={index}
               id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}

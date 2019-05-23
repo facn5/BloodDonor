@@ -3,6 +3,7 @@ const path = require('path');
 const cards = require('./cards.js');
 const insp = require('./inspCards.js');
 const authentication = require('./authentication');
+const userConfig = require('./userConfig');
 const userinfo = require('./profile');
 
 const router = express.Router();
@@ -33,8 +34,9 @@ router.post('/signin', ({ body }, res) => {
   authentication.signin(body, res);
 });
 
-router.post('/signout', (req, res) => {
-  authentication.logout(req, res);
+
+router.post('/setProfile', ({ body }, res) => {
+  userConfig.post(body, res);
 });
 
 module.exports = router;

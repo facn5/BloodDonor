@@ -24,7 +24,7 @@ a {
 
 .nav-container {
   position: relative;
-  height: 12vh;
+  height: 11vh;
 }
 
 .nav {
@@ -35,7 +35,7 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 12vh;
+  height: 11vh;
   transition: background 0.3s ease;
 }
 
@@ -114,6 +114,7 @@ a {
   }
   .nav-links a {
     color: white;
+    font-size: 20px;
   }
   .nav-links li {
     opacity: 0;
@@ -149,4 +150,8 @@ a {
 
 .toggle .line3 {
   transform: rotate(45deg) translate(-8px, -8.5px);
+}
+
+.hideProfile {
+  display: none;
 }
