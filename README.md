@@ -1,35 +1,44 @@
 # Blood Donator
 
 # What’s the problem?
-
---
+Reaching the bigger amount of blood donators using an easy to use social platform.
 
 # What’s the solution?
-
---
+An app where the user(Donator) can view and search for donating stations. Get some inspiration from our inspiration page.
+The app provides some questions to check if the
 
 # Link to the prototype:
 
 [Figma prototype](https://www.figma.com/file/KnLqYIvShOkk3cnVPFAAdOdy/Untitled?node-id=0%3A1)
 
-# User Stories: what can I do on this app?
+# USER STORY: What I can do as an unregistered user?
 
-1.  As a user, I want to share the donating cards to social media.
-1.  As unregistered user, I want to know and see information about your application.
-1.  As an unregistered user I should be able to get info of the card I click on.
-1.  As an unregistered user I should be able to open the application and see all the donation cards.
+1.  As an unregistered user, I can view the required blood type.
+1.  As an unregistered user, I can search for specific blood type/city/place.
+1.  As an unregistered user, I would like to share requests on social media.
+
+# What I can do as a user?
+- As a registered user, I want to have my own profile and to be able to edit it.
+- As a registered user, I want to be able to make account and login.
+
+## Teach-stack:
+React.js
+Express
+ESlint
+React Route
+Babel
+Parcel
+Crypto
+Bcrypt
+JWT
+en2
+MongoDB
+Heroku
+Cookie
+React cookie
+
 
 ## Getting Started
-
-How to get the project up and running on your local machine.
-
-_Please ensure you have this software **installed and running** on your local machine **before** you attempt to run this webapp._
-
-> **Node** (via nvm) see: https://github.com/creationix/nvm
-
-> **MongoDB** see: https://docs.mongodb.com/manual/installation/
-
-### Setups
 
 **1. Clone the repo:**
 
@@ -38,7 +47,6 @@ _Please ensure you have this software **installed and running** on your local ma
 **2. Install dependencies**
 
 ```
-$ cd BloodDonor
 $ npm i
 ```
 
@@ -53,14 +61,32 @@ $ npm i
 
 Create a config.env file in the root directory.
 
-_Add the following line to make your local database work, inserting your own username and password._
+_Add your 'mongodb' url to the env._
 
 `DB_URL = mongodb://[username:password@][host]:[port]/[databasename]`
 
 _Add a 'secret' for password encryption._
 
-`SECRET = "[SOMETHING SECRET]"`
+`SECRET = "[YOUR SECRET]"`
+
+_Add a 'key' for password encryption._
+
+`secretOrKey = "[YOUR SECRET]"`
 
 **5. Run the app**
 
 `$ npm run start`
+
+## Pictures from our web-app:
+![](https://imgur.com/VfVMhEB.png)
+![](https://imgur.com/SUWkvAU.png)
+![](https://imgur.com/R2FYaV4.png)
+![](https://imgur.com/yROcF94.png)
+## Some pictures from our team-work:
+![](https://imgur.com/KVhfpsb.png)
+![](https://imgur.com/19BwriG.png)
+![](https://imgur.com/Gpn4ndx.png)
+![](https://imgur.com/G298ZOq.png)
+![](https://imgur.com/YEnCAMs.png)
+![](https://imgur.com/FYnxKLL.png)
+![](https://imgur.com/bhVAKNO.png)
