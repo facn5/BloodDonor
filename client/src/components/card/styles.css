@@ -13,6 +13,11 @@
 }
 .card:hover {
   background-color: #f55;
+  margin: 5px;
+}
+.subContainer {
+  padding: 7px;
+  font-size: 22px;
 }
 .cardDetails {
   justify-self: left;

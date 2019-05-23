@@ -49,11 +49,6 @@ a {
   list-style: none;
 }
 
-.nav-links li :hover {
-  background-color: #f55;
-  list-style: none;
-  padding: 25%;
-}
 .nav-links a {
   color: black;
   letter-spacing: 1.2px;
