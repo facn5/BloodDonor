@@ -43,31 +43,23 @@ class Main extends Component {
     const { cards, search } = this.state;
     if (cards.length === 0)
       return (
-        <div className="input">
-          <input
-            type="search"
-            value={search}
-            onChange={this.handleSearch.bind(this)}
-            placeholder="Type here"
-          />
-          <Spinner
-            className="spinner"
-            size={60}
-            spinnerColor={"#333"}
-            spinnerWidth={2}
-            visible={true}
-          />
-        </div>
+        <Spinner
+          className="spinner"
+          size={60}
+          spinnerColor={"#333"}
+          spinnerWidth={2}
+          visible={true}
+        />
       );
     return (
-      <>
+      <div className="main">
         <input
+          className="input"
           type="search"
           value={search}
           onChange={this.handleSearch.bind(this)}
           placeholder="Type here"
         />
-        <hr />
 
         {cards
           .filter(card => {
@@ -83,7 +75,8 @@ class Main extends Component {
           .slice(0, 10)
           .map((card, index) => (
             <Card
-              index={"card" + index}
+              num={"card" + index}
+              key={index}
               id={card._id}
               stationName={card.card.stationName}
               location={card.card.location}
@@ -97,7 +90,7 @@ class Main extends Component {
               triggerDisplay={this.updateDisplay}
             />
           ))}
-      </>
+      </div>
     );
   }
 }

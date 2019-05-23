@@ -8,7 +8,7 @@ export class Header extends React.Component {
     slideClass: 'nav-links',
     animate: '',
     mbNavBarClass: 'mobile-navBar',
-    authenticated: ''
+    authenticated: '',
   };
 
   ToggleSlide = () => {
@@ -17,8 +17,7 @@ export class Header extends React.Component {
       this.setState({ slideClass: 'nav-links nav-active' });
     else this.setState({ slideClass: 'nav-links' });
 
-    if (this.state.animate === '')
-      this.setState({ animate: 'navLinkFade 0.5s ease forwards' });
+    if (this.state.animate === '') this.setState({ animate: 'navLinkFade 0.5s ease forwards' });
     else this.setState({ animate: '' });
 
     if (this.state.mbNavBarClass === 'mobile-navBar')
@@ -34,12 +33,10 @@ export class Header extends React.Component {
     fetch('/checkauth')
       .then(res => res.json())
       .then(data => {
-        if(data.authenticated){
-        if( this.state.authenticated !== 'Log out')
-          this.setState({ authenticated: 'Log out' });
+        if (data.authenticated) {
+          if (this.state.authenticated !== 'Log out') this.setState({ authenticated: 'Log out' });
         } else {
-          if (this.state.authenticated !== 'Login')
-            this.setState({ authenticated: 'Login' });
+          if (this.state.authenticated !== 'Login') this.setState({ authenticated: 'Login' });
         }
       });
   };
@@ -48,7 +45,7 @@ export class Header extends React.Component {
     this.setState({
       slideClass: 'nav-links',
       mbNavBarClass: 'mobile-navBar',
-      animate: ''
+      animate: '',
     });
   };
 
@@ -56,8 +53,8 @@ export class Header extends React.Component {
     const { authenticated } = this.state;
     if (authenticated === 'Login') this.props.history.push('/login');
     else {
-    cookie.remove('udetails');
-    this.props.history.push('/');
+      cookie.remove('udetails');
+      this.props.history.push('/');
     }
     this.exitNavbar();
   };
@@ -80,14 +77,14 @@ export class Header extends React.Component {
   onProfile = () => {
     this.props.history.push('/profile');
     this.exitNavbar();
-  }
+  };
 
   render() {
     return (
-      <div className='nav-container'>
-        <div className='nav'>
-          <div className='logo'>
-            <a href='#'>
+      <div className="nav-container">
+        <div className="nav">
+          <div className="logo">
+            <a href="#">
               <p>Save a Life</p>
             </a>
           </div>
@@ -102,19 +99,22 @@ export class Header extends React.Component {
               <a onClick={this.onDonate}>Donate</a>
             </li>
             <li style={{ animation: `${this.state.animate} 0.5s` }}>
-              <a href='#'>Request</a>
+              <a href="#">Request</a>
             </li>
             <li style={{ animation: `${this.state.animate} 0.6s` }}>
               <a onClick={this.onAbout}>About</a>
             </li>
-            <li className={this.state.authenticated!=='Log out'?'hideProfile':''} style={{ animation: `${this.state.animate} 0.7s` }}>
+            <li
+              className={this.state.authenticated !== 'Log out' ? 'hideProfile' : ''}
+              style={{ animation: `${this.state.animate} 0.7s` }}
+            >
               <a onClick={this.onProfile}>My profile</a>
             </li>
           </ul>
           <div className={this.state.mbNavBarClass} onClick={this.ToggleSlide}>
-            <div className='line1' />
-            <div className='line2' />
-            <div className='line3' />
+            <div className="line1" />
+            <div className="line2" />
+            <div className="line3" />
           </div>
         </div>
       </div>

@@ -1,54 +1,40 @@
-.showMore {
+.card {
   display: grid;
-  grid-template-rows: 9rem 26rem;
-  margin-top: 5px;
-}
-.hideAll {
-  display: grid;
+  grid-template-columns: 60% 20% 20%;
   grid-template-rows: 9rem;
-  margin-top: 5px;
-}
-.cardDetails {
-  display: flex;
-  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
   background-color: #f77;
   border-radius: 10px;
   font-family: "ubuntu";
   font-size: 1.2rem;
+  width: 96%;
+  margin-top: 1%;
+}
+.card:hover {
+  background-color: #f55;
   margin: 5px;
 }
 .subContainer {
   padding: 7px;
   font-size: 22px;
 }
-
-.subContainer.facebook {
-  padding: 3rem;
+.cardDetails {
+  justify-self: left;
+  margin-left: 3%;
 }
 
 .imgDim {
-  margin-top: 1rem;
-  width: 2rem;
-  height: 2rem;
-}
-.imgDim1 {
-  width: 2rem;
-  height: 2rem;
+  width: 45px;
+  height: 45px;
 }
 
-a {
-  padding: 1.2rem !important;
-  background: transparent;
-  border: none !important;
-  margin: 0 !important;
-}
 .show {
-  display: block;
+  display: grid;
+  justify-content: center;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .hide {
   display: none;
-}
-p {
-  margin-top: 0px;
-  margin-bottom: 0px;
 }

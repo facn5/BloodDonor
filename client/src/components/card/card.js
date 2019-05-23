@@ -1,19 +1,20 @@
-import React from "react";
-import "./styles";
-import { Map } from "./map/map.js";
-import { FacebookShareButton, FacebookIcon } from "react-share";
+import React from 'react';
+import './styles';
+import { Map } from './map/map.js';
+import { FacebookShareButton, FacebookIcon } from 'react-share';
 
 export default class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
     };
   }
 
   render() {
     const {
-      index,
+      num,
+      id,
       stationName,
       bloodType,
       location,
@@ -22,17 +23,17 @@ export default class Card extends React.Component {
       contact,
       openHours,
       mapSrc,
-      active
+      active,
     } = this.props;
     return (
-      <div id={index} className={active ? "showMore" : "hideAll"}>
-        <div className="cardDetails">
-          <div className="subContainer">
+      <>
+        <div id={num} className={'card'}>
+          <div className="cardDetails">
             <p>{stationName},</p>
             <p>{location},</p>
             <p>
               <img
-                className="imgDim1"
+                className="imgDim"
                 src="https://img.icons8.com/pastel-glyph/64/000000/--bloodbag.png"
               />
               {bloodType}
@@ -40,29 +41,26 @@ export default class Card extends React.Component {
             <p>{status}</p>
           </div>
 
-          <div className="subContainer facebook">
+          <div>
             <FacebookShareButton
-              children={<FacebookIcon round={true} size={40} />}
+              children={<FacebookIcon round={true} size={50} />}
               quote="You can save his life! Be his hero"
               hashtag="#Save_A_Life"
               url="https://www.facebook.com/TheDigitalTech/"
             />
           </div>
-          <div className="subContainer">
+          <div>
             <a
-              href={"#" + index}
+              href={'#' + num}
               onClick={() => {
                 this.props.triggerDisplay(this.props.id);
               }}
             >
-              <img
-                className="imgDim"
-                src="https://img.icons8.com/ios/64/000000/place-marker.png"
-              />
+              <img className="imgDim" src="https://img.icons8.com/ios/64/000000/place-marker.png" />
             </a>
           </div>
         </div>
-        <div className={active ? "show" : "hide"}>
+        <div className={active ? 'show' : 'hide'}>
           <Map
             stationName={stationName}
             street={street}
@@ -71,7 +69,7 @@ export default class Card extends React.Component {
             mapSrc={mapSrc}
           />
         </div>
-      </div>
+      </>
     );
   }
 }

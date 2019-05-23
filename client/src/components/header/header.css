@@ -19,12 +19,12 @@ a {
   height: 5px;
   background-color: #fff;
   margin: 5px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-container {
   position: relative;
-  height: 15vh;
+  height: 11vh;
 }
 
 .nav {
@@ -35,8 +35,8 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15vh;
-  transition: background 0.4s ease;
+  height: 11vh;
+  transition: background 0.3s ease;
 }
 
 .nav-links {
@@ -147,6 +147,6 @@ a {
   transform: rotate(45deg) translate(-8px, -8.5px);
 }
 
-.hideProfile{
-  display:none;
+.hideProfile {
+  display: none;
 }

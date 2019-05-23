@@ -1,9 +1,14 @@
 body input {
   display: grid;
-  grid-template-rows: 2rem auto;
+  grid-template-rows: 20% 80%;
 }
 
-input[type="search"] {
+.main {
+  display: grid;
+  justify-items: center;
+}
+.input {
+  margin-top: 1%;
   background: url("https://img.icons8.com/android/24/000000/search.png")
     no-repeat;
   background-position: 95%;
