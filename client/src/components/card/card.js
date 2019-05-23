@@ -1,13 +1,13 @@
-import React from "react";
-import "./styles";
-import { Map } from "./map/map.js";
-import { FacebookShareButton, FacebookIcon } from "react-share";
+import React from 'react';
+import './styles';
+import { Map } from './map/map.js';
+import { FacebookShareButton, FacebookIcon } from 'react-share';
 
 export default class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
     };
   }
 
@@ -23,11 +23,11 @@ export default class Card extends React.Component {
       contact,
       openHours,
       mapSrc,
-      active
+      active,
     } = this.props;
     return (
       <>
-        <div id={num} className={"card"}>
+        <div id={num} className={'card'}>
           <div className="cardDetails">
             <p>{stationName},</p>
             <p>{location},</p>
@@ -51,19 +51,16 @@ export default class Card extends React.Component {
           </div>
           <div>
             <a
-              href={"#" + num}
+              href={'#' + num}
               onClick={() => {
                 this.props.triggerDisplay(this.props.id);
               }}
             >
-              <img
-                className="imgDim"
-                src="https://img.icons8.com/ios/64/000000/place-marker.png"
-              />
+              <img className="imgDim" src="https://img.icons8.com/ios/64/000000/place-marker.png" />
             </a>
           </div>
         </div>
-        <div className={active ? "show" : "hide"}>
+        <div className={active ? 'show' : 'hide'}>
           <Map
             stationName={stationName}
             street={street}
