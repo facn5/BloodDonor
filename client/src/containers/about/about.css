@@ -3,12 +3,21 @@
   height: 94vh;
 }
 
+.about {
+  background-color: #f77;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 2px;
+  font-size: 40px;
+}
+
 .center {
   text-align: center;
+  font-size: 24px;
+  font-family: "ubuntu";
 }
 
 .teamMembersSection {
-  position: absolute;
   width: 100%;
   bottom: 0;
 }
@@ -17,5 +26,6 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
-  padding: 15px;
+  margin: 20px;
+  width: fit-content;
 }
