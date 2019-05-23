@@ -30,3 +30,37 @@ _Please ensure you have this software **installed and running** on your local ma
 > **MongoDB** see: https://docs.mongodb.com/manual/installation/
 
 ### Setups
+
+**1. Clone the repo:**
+
+`$ git clone https://github.com/facn5/BloodDonor.git`
+
+**2. Install dependencies**
+
+```
+$ cd BloodDonor
+$ npm i
+```
+
+**3. Install dependencies in the client folder**
+
+```
+$ cd client
+$ npm i
+```
+
+**4. Add initial environment Variables**
+
+Create a config.env file in the root directory.
+
+_Add the following line to make your local database work, inserting your own username and password._
+
+`DB_URL = mongodb://[username:password@][host]:[port]/[databasename]`
+
+_Add a 'secret' for password encryption._
+
+`SECRET = "[SOMETHING SECRET]"`
+
+**5. Run the app**
+
+`$ npm run start`
