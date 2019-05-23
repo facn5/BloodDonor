@@ -77,6 +77,20 @@ _Add a 'key' for password encryption._
 
 `$ npm run start`
 
+- _**Tables Details**_
+
+- Cards
+
+  `stationName, bloodType, status, street: Single line text | mapSrc: Link to Map Location | contact, openHours: Number line text`
+
+- Users
+
+  `username: Single line text| password: Multiple select | phoneNumber: Number line text | config: { bloodType: Single line text | validAge, healthStatus, recentSurgery, getNotification: Boolean}`
+
+- Inspirations
+
+  `title: Single line text | description: Long text`
+
 ## Pictures from our web-app:
 ![](https://imgur.com/VfVMhEB.png)
 ![](https://imgur.com/SUWkvAU.png)
