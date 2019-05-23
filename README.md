@@ -21,4 +21,12 @@
 
 ## Getting Started
 
+How to get the project up and running on your local machine.
+
+_Please ensure you have this software **installed and running** on your local machine **before** you attempt to run this webapp._
+
+> **Node** (via nvm) see: https://github.com/creationix/nvm
+
+> **MongoDB** see: https://docs.mongodb.com/manual/installation/
+
 ### Setups
